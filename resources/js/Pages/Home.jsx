@@ -1,5 +1,6 @@
-export default function Home() {
+
+export default function Home({name}) {
     return (
-        <h1 className="text-5xl font-bold">Hello</h1>
-    );
+        <h1 className='text-gray-500 text-2xl bold'>Hello {name}</h1>
+    )
 }
