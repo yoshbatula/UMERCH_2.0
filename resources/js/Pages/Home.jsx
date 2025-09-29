@@ -1,6 +1,8 @@
-
-export default function Home({name}) {
+import umbg from '../../images/um5.jpg';
+export default function Home() {
     return (
-        <h1 className='text-gray-500 text-2xl bold'>{name}</h1>
-    )
+        <div className='bg-[#F6F6F6]'>
+            <img src={umbg} alt="" className='bg-opacity-10'/>
+        </div>
+    );
 }
