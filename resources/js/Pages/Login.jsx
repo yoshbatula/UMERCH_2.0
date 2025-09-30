@@ -10,7 +10,7 @@ export default function Login() {
                 </div>
                 {/*  */}
                 <div className='absolute '>
-                    <h1 className='text-white absolute'>Welcome to UM</h1>asdas
+                    <h1 className='text-white absolute'>Welcome to UM</h1>asdasasdsa
                 </div>
             </div>
         </>
