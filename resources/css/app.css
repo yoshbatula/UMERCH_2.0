@@ -9,3 +9,7 @@
 @theme {
     --font-sans: 'Montserrat';
 }
+
+body {
+    overflow:hidden;
+}
