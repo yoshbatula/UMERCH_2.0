@@ -36,6 +36,12 @@ export default function Login() {
                         <div className='text-center'>
                             <h1 className='text-white text-3xl font-bold'>LOGIN</h1>
                         </div>
+                        <div className='mt-5 ml-30'>
+                            <input type="text-white" className='bg-[#FFFFFF] border rounded-[10px] opacity-30 h-8' placeholder='Username'/>
+                        </div>
+                        <div className='mt-5 ml-30'>
+                            <input type="password" className='bg-[#FFFFFF] border rounded-[10px] opacity-30 h-8' placeholder='Password'/>
+                        </div>
                     </div>
                 </div>
             </div>
