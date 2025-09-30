@@ -28,9 +28,13 @@ export default function Login() {
                             <button className='text-white item-center mt-2'>VIEW COLLECTION</button>
                         </div>
                     </div>
-                    <div className='absolute inset-0 bg-black opacity-75 rounded-[15px]'>
+                    {/* LOGIN FORM */}
+                    <div className='absolute inset-0 bg-black opacity-75 rounded-[15px] mt-20 ml-240 w-110 h-120'>
                         <div className='flex flex-col justify-items-end text-center'>
-                            <img src={loginlogo} alt="" className='w-50'/>
+                            <img src={loginlogo} alt="" className='w-50 ml-31'/>
+                        </div>
+                        <div className='text-center'>
+                            <h1 className='text-white text-3xl font-bold'>LOGIN</h1>
                         </div>
                     </div>
                 </div>
