@@ -14,7 +14,7 @@ export default function navbar({children}) {
                 <nav className='text-white mt-2 text-[14px]'>
                     <Link href="/" className="mx-2 text-white">HOME</Link>
                     <Link href="/landing" className="mx-2 text-white">SHOP</Link>
-                    <Link href="/about" className="mx-2 text-white">ABOUT US</Link>
+                    <Link href="/About" className="mx-2 text-white">ABOUT US</Link>
                     <Link href="/contact" className="mx-2 text-white">CONTACT</Link>
                 </nav>
 
