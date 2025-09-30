@@ -25,7 +25,9 @@ export default function Login() {
                             <p className='text-white'>university look.</p>
                         </div>
                         <div className='mt-5 bg-[#9C0306] text-center justify-center w-45 h-10 border border-black'>
-                            <button className='text-white item-center mt-2'>VIEW COLLECTION</button>
+                            <form action="/landing" method="get">
+                                <input type="submit" className='text-white item-center mt-2 hover:cursor' value="VIEW COLLECTION" />
+                            </form>
                         </div>
                     </div>
                     {/* LOGIN FORM */}
