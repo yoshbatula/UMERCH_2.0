@@ -9,7 +9,7 @@ export default function LoginNav() {
                 <div>
                     <img src={UmerchLogo} alt="Umerch Logo" className='h-14 ml-2'/>
                 </div>
-                
+                {/* INITIAL COMMIT */}
                 {/* Navigation Links */}
                 <nav className='text-white mt-2 text-[14px]'>
                     <Link href="/" className="mx-2 text-white">HOME</Link>
