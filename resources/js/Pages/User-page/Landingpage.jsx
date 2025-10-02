@@ -1,3 +1,5 @@
+import Layout from '@/Layouts/navbar';
+
 export default function Landingpage() {
     const name = "charisse"
     return (
@@ -8,3 +10,5 @@ export default function Landingpage() {
         </div>
     );
 }
+
+Landingpage.layout = page => <Layout children={page} />

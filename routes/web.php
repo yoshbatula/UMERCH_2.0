@@ -14,3 +14,7 @@ Route::get('/landing', function () {
 Route::get('/About', function () {
     return Inertia::render('User-page/About');
 });
+
+Route::get('/Authentication', function () {
+    return Inertia::render('User-page/Authentication');
+});

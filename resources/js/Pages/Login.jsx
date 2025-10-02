@@ -1,6 +1,6 @@
 import umbg from '../../images/um5.jpg';
 import loginlogo from '../../images/Login-Logo.png'
-
+import Layout from '@/Layouts/navbar';
 export default function Login() {
     return (
         <>
@@ -31,18 +31,67 @@ export default function Login() {
                         </div>
                     </div>
                     {/* LOGIN FORM */}
-                    <div className='absolute inset-0 bg-black opacity-75 rounded-[15px] mt-20 ml-240 w-110 h-120'>
+                    <div className='absolute inset-0 bg-black opacity-75 rounded-[15px] mt-20 ml-240 w-110 h-125'>
                         <div className='flex flex-col justify-items-end text-center'>
                             <img src={loginlogo} alt="" className='w-50 ml-31'/>
                         </div>
                         <div className='text-center'>
                             <h1 className='text-white text-3xl font-bold'>LOGIN</h1>
                         </div>
-                        <div className='mt-5 ml-30'>
-                            <input type="text-white" className='bg-[#FFFFFF] border rounded-[10px] opacity-30 h-8' placeholder='Username'/>
+                        {/* Username Input */}
+                        <div className='mt-5 ml-18 relative'>
+                            <input 
+                                type="text" 
+                                className='bg-white/30 border rounded-[10px] h-10 w-75 pl-10 pr-4 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50' 
+                                placeholder='Username'
+                            />
+                            <svg 
+                                className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-300"
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
                         </div>
-                        <div className='mt-5 ml-30'>
-                            <input type="password" className='bg-[#FFFFFF] border rounded-[10px] opacity-30 h-8' placeholder='Password'/>
+                        
+                        {/* Password Input */}
+                        <div className='mt-5 ml-18 relative'>
+                            <input 
+                                type="password" 
+                                className='bg-white/30 border rounded-[10px] h-10 w-75 pl-10 pr-4 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50' 
+                                placeholder='Password'
+                            />
+                            <svg 
+                                className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-300"
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                        </div>
+                        <div className='flex flex-row justify-between mt-5 ml-18'>
+                           <div className='text-white flex items-center'>
+                                <input 
+                                    type="checkbox"
+                                    id="rememberMe"
+                                    className="w-4 h-4 text-white bg-white/30 border-gray-300 rounded focus:ring-white/50 focus:ring-2"
+                                />
+                                <label htmlFor="rememberMe" className="ml-2 text-sm text-white">
+                                    Remember Me
+                                </label>
+                           </div>
+                           <div className='mr-18'>
+                                <a href="#" className='text-white text-sm hover:underline'>Forgot Password?</a>
+                           </div>
+                        </div>
+                        <div>
+                            <form action="/Authentication">
+                                <button className='bg-[#9C0306] text-white rounded-[10px] h-10 w-75 mt-5 ml-18'>
+                                    Login
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -50,4 +99,7 @@ export default function Login() {
         </>
     );
 }
+
+Login.layout = page => <Layout children={page} />
+
 

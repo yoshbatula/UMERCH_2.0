@@ -1,3 +1,5 @@
+import Layout from '@/Layouts/navbar';
+
 export default function About() {
 
     return (
@@ -8,3 +10,5 @@ export default function About() {
         </div>
     );
 }
+
+About.layout = page => <Layout children={page} />
