@@ -9,7 +9,6 @@ export default function LoginNav() {
                 <div>
                     <img src={UmerchLogo} alt="Umerch Logo" className='h-14 ml-2'/>
                 </div>
-                {/* INITIAL COMMIT */}
                 {/* Navigation Links */}
                 <nav className='text-white mt-2 text-[14px]'>
                     <Link href="/" className="mx-2 text-white">HOME</Link>
@@ -17,7 +16,6 @@ export default function LoginNav() {
                     <Link href="/About" className="mx-2 text-white">ABOUT US</Link>
                     <Link href="/contact" className="mx-2 text-white">CONTACT</Link>
                 </nav>
-                {/* bukas nako code hehe     */}
                 {/* Search Bar */}
                 <div className='mt-1 ml-10 relative'>
                     <input type="text" className='p-2 pl-10 rounded-[15px] bg-white w-64 h-8' placeholder='Search' />

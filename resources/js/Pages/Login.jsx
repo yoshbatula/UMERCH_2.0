@@ -1,7 +1,20 @@
 import umbg from '../../images/um5.jpg';
 import loginlogo from '../../images/Login-Logo.png'
 import Layout from '@/Layouts/navbar';
+import { useForm } from '@inertiajs/react';
 export default function Login() {
+    const { data, setData, post, processing, errors } = useForm({
+        email: '',
+        user_id: '',
+        password: '',
+        rememberMe: false,
+    });
+
+    const submit = (e) => {
+        e.preventDefault();
+        post('/Authentication');
+    }
+
     return (
         <>
             <div className='bg-[#F6F6F6] flex flex-col w-full h-screen'>
@@ -32,7 +45,8 @@ export default function Login() {
                     </div>
                     {/* LOGIN FORM */}
                     <div className='absolute inset-0 bg-black opacity-75 rounded-[15px] mt-20 ml-240 w-110 h-125'>
-                        <div className='flex flex-col justify-items-end text-center'>
+                        <form action={useForm}>
+                            <div className='flex flex-col justify-items-end text-center'>
                             <img src={loginlogo} alt="" className='w-50 ml-31'/>
                         </div>
                         <div className='text-center'>
@@ -44,6 +58,8 @@ export default function Login() {
                                 type="text" 
                                 className='bg-white/30 border rounded-[15px] h-10 w-75 pl-10 pr-4 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50' 
                                 placeholder='Username'
+                                value={data.email}
+                                onChange={e => setData('email', e.target.value)}
                             />
                             <svg 
                                 className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-300"
@@ -61,6 +77,8 @@ export default function Login() {
                                 type="password" 
                                 className='bg-white/30 border rounded-[15px] h-10 w-75 pl-10 pr-4 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50' 
                                 placeholder='Password'
+                                value={data.password}
+                                onChange={(e) => setData('password', e.target.value)}
                             />
                             <svg 
                                 className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-300"
@@ -87,12 +105,11 @@ export default function Login() {
                            </div>
                         </div>
                         <div>
-                            <form action="/Authentication">
-                                <button className='bg-[#9C0306] text-white rounded-[15px] h-10 w-75 mt-5 ml-18'>
+                            <button className='bg-[#9C0306] text-white rounded-[15px] h-10 w-75 mt-5 ml-18'>
                                     Login
-                                </button>
-                            </form>
+                            </button>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
