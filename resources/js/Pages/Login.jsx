@@ -16,10 +16,9 @@ export default function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        // Submit login form
         post('/login', {
             onSuccess: () => {
-                // Successfully redirected to Authentication page
+                
             },
             onError: (errors) => {
                 console.log('Login errors:', errors);
@@ -65,41 +64,55 @@ export default function Login() {
                             <h1 className='text-white text-3xl font-bold'>LOGIN</h1>
                         </div>
                         {/* Username Input */}
-                        <div className='mt-5 ml-18 relative'>
-                            <input 
-                                type="text" 
-                                className='bg-white/30 border rounded-[15px] h-10 w-75 pl-10 pr-4 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50' 
-                                placeholder='Umindanao/ID'
-                                value={data.email}
-                                onChange={e => setData('email', e.target.value)}
-                            />
-                            <svg 
-                                className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-300"
-                                fill="none" 
-                                stroke="currentColor" 
-                                viewBox="0 0 24 24"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                            </svg>
+                        <div className='mt-5 ml-18'>
+                            <div className="relative">
+                                <input 
+                                    type="text" 
+                                    className='bg-white/30 border rounded-[15px] h-10 w-75 pl-10 pr-4 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50' 
+                                    placeholder='Umindanao/ID'
+                                    value={data.email}
+                                    onChange={e => setData('email', e.target.value)}
+                                />
+                                <svg 
+                                    className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-300"
+                                    fill="none" 
+                                    stroke="currentColor" 
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                </svg>
+                            </div>
+                            {errors.email && (
+                                <div className="text-red-400 text-sm mt-1 ml-2">
+                                    {errors.email}
+                                </div>
+                            )}
                         </div>
                         
                         {/* Password Input */}
-                        <div className='mt-5 ml-18 relative'>
-                            <input 
-                                type="password" 
-                                className='bg-white/30 border rounded-[15px] h-10 w-75 pl-10 pr-4 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50' 
-                                placeholder='Password'
-                                value={data.password}
-                                onChange={(e) => setData('password', e.target.value)}
-                            />
-                            <svg 
-                                className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-300"
-                                fill="none" 
-                                stroke="currentColor" 
-                                viewBox="0 0 24 24"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                            </svg>
+                        <div className='mt-5 ml-18'>
+                            <div className="relative">
+                                <input 
+                                    type="password" 
+                                    className='bg-white/30 border rounded-[15px] h-10 w-75 pl-10 pr-4 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50' 
+                                    placeholder='Password'
+                                    value={data.password}
+                                    onChange={(e) => setData('password', e.target.value)}
+                                />
+                                <svg 
+                                    className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-300"
+                                    fill="none" 
+                                    stroke="currentColor" 
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                </svg>
+                            </div>
+                            {errors.password && (
+                                <div className="text-red-400 text-sm mt-1 ml-2">
+                                    {errors.password}
+                                </div>
+                            )}
                         </div>
                         <div className='flex flex-row justify-between mt-5 ml-18'>
                            <div className='text-white flex items-center'>
