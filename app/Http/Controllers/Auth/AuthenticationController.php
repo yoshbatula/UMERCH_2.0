@@ -126,7 +126,10 @@ class AuthenticationController extends Controller {
         }
 
         // Redirect to landing page
-        return redirect()->route('landing')->with('success', 'Email verified successfully!');
+        Log::info("About to redirect to landing page for user {$userModel->email}");
+        $redirectResponse = redirect()->route('landing')->with('success', 'Email verified successfully!');
+        Log::info("Redirect response created, target URL: " . $redirectResponse->getTargetUrl());
+        return $redirectResponse;
     }
 
     // Resend OTP

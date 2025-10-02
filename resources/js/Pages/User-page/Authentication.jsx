@@ -1,41 +1,78 @@
 import { useState, useRef, useEffect } from 'react';
-import { useForm } from '@inertiajs/react';
+import { useForm, router } from '@inertiajs/react';
 
 export default function Authentication({ user }) {
     const [otp, setOtp] = useState(['', '', '', '', '', '']);
     const [resendCooldown, setResendCooldown] = useState(0);
     const inputRefs = useRef([]);
     
-    const { post, processing } = useForm();
+    const { data, setData, post, processing, errors } = useForm({
+        otp: ''
+    });
 
-    // Handle OTP input changes
+    const censorEmail = (email) => {
+        if (!email) return 'your registered email';
+        
+        const [localPart, domain] = email.split('@');
+        if (!domain) return email;
+        
+        const censoredLocal = localPart.length > 3 
+            ? localPart.substring(0, 2) + '*'.repeat(localPart.length - 3) + localPart.slice(-1)
+            : localPart.substring(0, 1) + '*'.repeat(localPart.length - 1);
+        
+        const domainParts = domain.split('.');
+        const mainDomain = domainParts[0];
+        const tld = domainParts.slice(1).join('.');
+        
+        const censoredDomain = mainDomain.length > 3
+            ? mainDomain.substring(0, 2) + '*'.repeat(mainDomain.length - 2)
+            : mainDomain.substring(0, 1) + '*'.repeat(mainDomain.length - 1);
+        
+        return `${censoredLocal}@${censoredDomain}.${tld}`;
+    };
+
     const handleOtpChange = (index, value) => {
-        if (value.length > 1) return; // Only allow single character
+        if (value.length > 1) return; 
         
         const newOtp = [...otp];
         newOtp[index] = value;
         setOtp(newOtp);
         
-        // Auto-focus next input
         if (value && index < 5) {
             inputRefs.current[index + 1]?.focus();
         }
     };
 
-    // Handle backspace
+
     const handleKeyDown = (index, e) => {
         if (e.key === 'Backspace' && !otp[index] && index > 0) {
             inputRefs.current[index - 1]?.focus();
         }
     };
 
-    // Verify OTP
     const handleVerify = () => {
         const otpCode = otp.join('');
+        console.log('Attempting to verify OTP:', otpCode);
+        
         if (otpCode.length === 6) {
-            post('/verify-otp', {
-                data: { otp: otpCode }
+            router.post('/verify-otp', {
+                otp: otpCode
+            }, {
+                onStart: () => {
+                    console.log('OTP verification started');
+                },
+                onSuccess: (page) => {
+                    console.log('OTP verified successfully - redirecting to landing', page);
+                },
+                onError: (errors) => {
+                    console.log('OTP verification errors:', errors);
+                },
+                onFinish: () => {
+                    console.log('OTP verification finished');
+                }
             });
+        } else {
+            console.log('OTP code length is not 6:', otpCode.length);
         }
     };
 
@@ -43,7 +80,7 @@ export default function Authentication({ user }) {
     const handleResend = () => {
         if (resendCooldown > 0) return;
         
-        post('/resend-otp');
+        router.post('/resend-otp');
         setResendCooldown(60); // 60 second cooldown
     };
 
@@ -67,7 +104,7 @@ export default function Authentication({ user }) {
                 {/* SUBHEADER */}
                 <div className="mt-10 text-center">
                     <p>A verification code has been sent to</p>
-                    <p className="font-semibold">{user?.email || 'your registered email'}</p>
+                    <p className="font-semibold">{censorEmail(user?.email)}</p>
                 </div>
                 {/* OTP INPUT FIELDS */}
                 <div className="flex flex-row space-x-4 mt-8">

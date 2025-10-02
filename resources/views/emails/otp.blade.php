@@ -75,7 +75,7 @@
         </div>
 
         <div class="content">
-            <p>Hello {{ $user->name ?? 'User' }},</p>
+            <p>Hello {{ $user->name ?? 'User' }}</p>
             
             <p>You have requested to verify your email address. Please use the verification code below:</p>
             
