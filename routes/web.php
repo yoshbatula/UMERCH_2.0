@@ -19,4 +19,4 @@ Route::post('/resend-otp', [AuthenticationController::class, 'resendOtp'])->name
 // Dashboard (after successful verification)
 Route::get('/landing', function() {
     return Inertia::render('User-page/Landingpage');
-})->name('landing')->middleware('auth');
+})->name('landing');
