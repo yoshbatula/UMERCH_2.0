@@ -2,6 +2,8 @@ import umbg from '../../images/um5.jpg';
 import loginlogo from '../../images/Login-Logo.png'
 import Layout from '@/Layouts/navbar';
 import { useForm } from '@inertiajs/react';
+import axios from 'axios';
+
 export default function Login() {
     const { data, setData, post, processing, errors } = useForm({
         email: '',
@@ -45,7 +47,7 @@ export default function Login() {
                     </div>
                     {/* LOGIN FORM */}
                     <div className='absolute inset-0 bg-black opacity-75 rounded-[15px] mt-20 ml-240 w-110 h-125'>
-                        <form action={useForm}>
+                        <form onSubmit={useForm}>
                             <div className='flex flex-col justify-items-end text-center'>
                             <img src={loginlogo} alt="" className='w-50 ml-31'/>
                         </div>
@@ -105,7 +107,7 @@ export default function Login() {
                            </div>
                         </div>
                         <div>
-                            <button className='bg-[#9C0306] text-white rounded-[15px] h-10 w-75 mt-5 ml-18'>
+                            <button type='submit' disabled={processing} className='bg-[#9C0306] text-white rounded-[15px] h-10 w-75 mt-5 ml-18'>
                                     Login
                             </button>
                         </div>
