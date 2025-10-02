@@ -40,12 +40,11 @@ class AuthenticationController extends Controller {
             // Generate 6-digit OTP
             $otp = str_pad(random_int(0, 999999), 6, '0', STR_PAD_LEFT);
             
-            // Store OTP in cache with 10 minutes expiration
+           
             Cache::put("otp_{$user->id}", $otp, now()->addMinutes(10));
             
             Log::info("OTP generated for user {$user->email}: {$otp}");
             
-            // Check mail configuration
             Log::info("Mail configuration - Driver: " . config('mail.default'));
             Log::info("Mail configuration - Host: " . config('mail.mailers.smtp.host'));
             Log::info("Mail configuration - From: " . config('mail.from.address'));
@@ -105,20 +104,18 @@ class AuthenticationController extends Controller {
 
         Log::info("OTP Verification - Success for user {$user->email}");
 
-        // OTP is valid - clear it from cache
         Cache::forget("otp_{$user->id}");
         
-        // Get fresh user instance from database to ensure we can save
+        
         $userModel = User::find($user->id);
         
         if ($userModel) {
-            // Mark user as verified
+            
             $userModel->email_verified_at = now();
             $userModel->save();
             
             Log::info("User {$userModel->email} email verified successfully");
             
-            // Log the user in to ensure they stay authenticated
             Auth::login($userModel);
         } else {
             Log::error("User model not found during OTP verification for ID: {$user->id}");
@@ -141,7 +138,7 @@ class AuthenticationController extends Controller {
             return redirect()->route('login');
         }
 
-        // Check if user is trying to resend too frequently
+       
         $lastSent = Cache::get("otp_last_sent_{$user->id}");
         if ($lastSent && now()->diffInSeconds($lastSent) < 60) {
             return back()->withErrors([

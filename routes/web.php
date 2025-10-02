@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\AuthenticationController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -19,5 +20,9 @@ Route::post('/resend-otp', [AuthenticationController::class, 'resendOtp'])->name
 
 // Dashboard (after successful verification)
 Route::get('/landing', function() {
-    return Inertia::render('User-page/Landingpage');
+    return Inertia::render('User-page/Landingpage', [
+        'auth' => [
+            'user' => Auth::user()
+        ]
+    ]);
 })->name('landing');

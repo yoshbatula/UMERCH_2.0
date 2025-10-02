@@ -7,7 +7,7 @@
 @source '../**/*.jsx';
 @source '../**/*.vue';
 @theme {
-    --font-sans: 'Montserrat';
+    --font-sans: 'Montserrat', 'Cormonant Garamond';
 }
 
 body {

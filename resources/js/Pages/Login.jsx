@@ -2,8 +2,7 @@ import umbg from '../../images/um5.jpg';
 import loginlogo from '../../images/Login-Logo.png'
 import Layout from '@/Layouts/navbar';
 import { useForm } from '@inertiajs/react';
-import { router } from '@inertiajs/react';
-import axios from 'axios';
+
 
 export default function Login() {
     const { data, setData, post, processing, errors } = useForm({
@@ -41,8 +40,8 @@ export default function Login() {
                             <h1 className='text-white text-1xl'>CASUAL & EVERYDAY</h1>
                         </div>
                         <div>
-                            <p className='text-white text-5xl mt-4 font-bold'>Effortlessly combine</p>
-                            <p className='text-white text-5xl mt-4 font-bold'>comfort with campus style!</p>
+                            <p className='text-white text-5xl mt-4 font-bold Cormonant Garamond'>Effortlessly combine</p>
+                            <p className='text-white text-5xl mt-4 font-bold Cormonant Garamond'>comfort with campus style!</p>
                         </div>
                         <div className='mt-5'>
                             <p className='text-white'>Discover our Casual & Everyday Collection at UMerch, where relaxed designs meet a refined</p>

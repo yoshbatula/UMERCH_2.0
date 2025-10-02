@@ -29,8 +29,8 @@ export default function LoginNav({ children, user }) {
                     </svg>
                 </div>
 
-                {/* Account Logo */}
-                <div className='ml-auto'>   
+                {/* Account Section */}
+                <div className='ml-auto flex items-center gap-2'>   
                     <Link href="/account" className="text-white hover:text-gray-200">
                         <svg 
                             className="w-6 h-6" 
@@ -46,10 +46,7 @@ export default function LoginNav({ children, user }) {
                             />
                         </svg>
                     </Link>
-                </div>
-
-                <div className='ml-auto'>
-                    <p>{user?.name}</p>
+                    <p className='text-white text-sm'>{user?.name || 'Guest'}</p>
                 </div>
             </header>
             <main>
