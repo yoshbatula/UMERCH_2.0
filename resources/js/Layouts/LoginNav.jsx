@@ -1,7 +1,7 @@
-import UmerchLogo from '@/assets/Umerch-Logo.png';
+import UmerchLogo from '../../images/Umerch-Logo.png'
 import { Link } from '@inertiajs/react';
 
-export default function LoginNav() {
+export default function LoginNav({ children, user }) {
     return (
         <>
             <header className='p-4 bg-[#9C0306] flex flex-row justify-start items-center gap-6 h-20'>
@@ -29,13 +29,8 @@ export default function LoginNav() {
                     </svg>
                 </div>
 
-                {/* Sign-In */}
-                <div className='ml-auto'>
-                    <Link href="/login" className="mx-2 text-white text-[14px]">SIGN IN</Link>
-                </div>
-
                 {/* Account Logo */}
-                <div className='mr-8'>   
+                <div className='ml-auto'>   
                     <Link href="/account" className="text-white hover:text-gray-200">
                         <svg 
                             className="w-6 h-6" 
@@ -52,10 +47,14 @@ export default function LoginNav() {
                         </svg>
                     </Link>
                 </div>
+
+                <div className='ml-auto'>
+                    <p>{user?.name}</p>
+                </div>
             </header>
-            {/* <main>
+            <main>
                 {children}
-            </main> */}
+            </main>
         </>
     );
 }

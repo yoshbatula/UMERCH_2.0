@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import { useForm, router } from '@inertiajs/react';
 
-export default function Authentication({ user }) {
+export default function Authentication({ user, errors: pageErrors }) {
     const [otp, setOtp] = useState(['', '', '', '', '', '']);
     const [resendCooldown, setResendCooldown] = useState(0);
+    const [localErrors, setLocalErrors] = useState({});
     const inputRefs = useRef([]);
     
     const { data, setData, post, processing, errors } = useForm({
@@ -54,6 +55,9 @@ export default function Authentication({ user }) {
         const otpCode = otp.join('');
         console.log('Attempting to verify OTP:', otpCode);
         
+        // Clear previous errors
+        setLocalErrors({});
+        
         if (otpCode.length === 6) {
             router.post('/verify-otp', {
                 otp: otpCode
@@ -63,9 +67,16 @@ export default function Authentication({ user }) {
                 },
                 onSuccess: (page) => {
                     console.log('OTP verified successfully - redirecting to landing', page);
+                    // Clear OTP inputs on success
+                    setOtp(['', '', '', '', '', '']);
                 },
                 onError: (errors) => {
                     console.log('OTP verification errors:', errors);
+                    setLocalErrors(errors);
+                    // Clear OTP inputs on error so user can try again
+                    setOtp(['', '', '', '', '', '']);
+                    // Focus first input
+                    inputRefs.current[0]?.focus();
                 },
                 onFinish: () => {
                     console.log('OTP verification finished');
@@ -73,6 +84,7 @@ export default function Authentication({ user }) {
             });
         } else {
             console.log('OTP code length is not 6:', otpCode.length);
+            setLocalErrors({ otp: 'Please enter all 6 digits' });
         }
     };
 
@@ -80,8 +92,19 @@ export default function Authentication({ user }) {
     const handleResend = () => {
         if (resendCooldown > 0) return;
         
-        router.post('/resend-otp');
-        setResendCooldown(60); // 60 second cooldown
+        // Clear previous errors
+        setLocalErrors({});
+        
+        router.post('/resend-otp', {}, {
+            onSuccess: () => {
+                console.log('OTP resent successfully');
+                setResendCooldown(60); // 60 second cooldown
+            },
+            onError: (errors) => {
+                console.log('Resend OTP errors:', errors);
+                setLocalErrors(errors);
+            }
+        });
     };
 
     // Cooldown timer
@@ -116,11 +139,24 @@ export default function Authentication({ user }) {
                             value={digit}
                             onChange={(e) => handleOtpChange(index, e.target.value)}
                             onKeyDown={(e) => handleKeyDown(index, e)}
-                            className="bg-transparent border-0 border-b-2 border-gray-400 text-center text-lg font-semibold tracking-widest focus:outline-none focus:border-[#9C0306] transition-colors duration-300 w-12 pb-2"
+                            className={`bg-transparent border-0 border-b-2 text-center text-lg font-semibold tracking-widest focus:outline-none transition-colors duration-300 w-12 pb-2 ${
+                                localErrors.otp || pageErrors?.otp 
+                                    ? 'border-red-500 focus:border-red-600' 
+                                    : 'border-gray-400 focus:border-[#9C0306]'
+                            }`}
                             maxLength="1"
                         />
                     ))}
                 </div>
+                
+                {/* ERROR MESSAGE */}
+                {(localErrors.otp || pageErrors?.otp) && (
+                    <div className="mt-3 text-center">
+                        <p className="text-red-600 text-sm font-medium">
+                            {localErrors.otp || pageErrors.otp}
+                        </p>
+                    </div>
+                )}
                 <div className="mt-6">
                     <p className="text-gray-600">
                         Didn't receive the code? 

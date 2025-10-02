@@ -1,14 +1,14 @@
-import Layout from '@/Layouts/navbar';
 
-export default function Landingpage() {
-    const name = "charisse"
+import Layout from '@/Layouts/Loginnav';
+
+export default function Landingpage({ auth }) {
     return (
-        <div>
-            <h1 className="text-5xl">
-                {name}
-            </h1>
-        </div>
+       <>
+            <div>
+                <h1>Welcome to UMerch!</h1>
+            </div>
+       </>
     );
 }
 
-Landingpage.layout = page => <Layout children={page} />
+Landingpage.layout = (page) => <Layout children={page} user={page.props.auth?.user} />
