@@ -42,7 +42,7 @@ export default function Login() {
                         <div className='mt-5 ml-18 relative'>
                             <input 
                                 type="text" 
-                                className='bg-white/30 border rounded-[10px] h-10 w-75 pl-10 pr-4 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50' 
+                                className='bg-white/30 border rounded-[15px] h-10 w-75 pl-10 pr-4 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50' 
                                 placeholder='Username'
                             />
                             <svg 
@@ -59,7 +59,7 @@ export default function Login() {
                         <div className='mt-5 ml-18 relative'>
                             <input 
                                 type="password" 
-                                className='bg-white/30 border rounded-[10px] h-10 w-75 pl-10 pr-4 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50' 
+                                className='bg-white/30 border rounded-[15px] h-10 w-75 pl-10 pr-4 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50' 
                                 placeholder='Password'
                             />
                             <svg 
@@ -88,7 +88,7 @@ export default function Login() {
                         </div>
                         <div>
                             <form action="/Authentication">
-                                <button className='bg-[#9C0306] text-white rounded-[10px] h-10 w-75 mt-5 ml-18'>
+                                <button className='bg-[#9C0306] text-white rounded-[15px] h-10 w-75 mt-5 ml-18'>
                                     Login
                                 </button>
                             </form>
