@@ -2,6 +2,7 @@ import umbg from '../../images/um5.jpg';
 import loginlogo from '../../images/Login-Logo.png'
 import Layout from '@/Layouts/navbar';
 import { useForm } from '@inertiajs/react';
+import { router } from '@inertiajs/react';
 import axios from 'axios';
 
 export default function Login() {
@@ -12,9 +13,18 @@ export default function Login() {
         rememberMe: false,
     });
 
-    const submit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        post('/Authentication');
+        
+        // Submit login form
+        post('/login', {
+            onSuccess: () => {
+                // Successfully redirected to Authentication page
+            },
+            onError: (errors) => {
+                console.log('Login errors:', errors);
+            }
+        });
     }
 
     return (
@@ -47,7 +57,7 @@ export default function Login() {
                     </div>
                     {/* LOGIN FORM */}
                     <div className='absolute inset-0 bg-black opacity-75 rounded-[15px] mt-20 ml-240 w-110 h-125'>
-                        <form onSubmit={useForm}>
+                        <form onSubmit={handleSubmit}>
                             <div className='flex flex-col justify-items-end text-center'>
                             <img src={loginlogo} alt="" className='w-50 ml-31'/>
                         </div>
@@ -59,7 +69,7 @@ export default function Login() {
                             <input 
                                 type="text" 
                                 className='bg-white/30 border rounded-[15px] h-10 w-75 pl-10 pr-4 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50' 
-                                placeholder='Username'
+                                placeholder='Umindanao/ID'
                                 value={data.email}
                                 onChange={e => setData('email', e.target.value)}
                             />
