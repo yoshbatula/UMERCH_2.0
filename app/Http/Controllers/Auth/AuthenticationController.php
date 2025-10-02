@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -107,11 +108,22 @@ class AuthenticationController extends Controller {
         // OTP is valid - clear it from cache
         Cache::forget("otp_{$user->id}");
         
-        // Mark user as verified
-        $user->email_verified_at = now();
-        $user->save();
-
-        Log::info("User {$user->email} email verified successfully");
+        // Get fresh user instance from database to ensure we can save
+        $userModel = User::find($user->id);
+        
+        if ($userModel) {
+            // Mark user as verified
+            $userModel->email_verified_at = now();
+            $userModel->save();
+            
+            Log::info("User {$userModel->email} email verified successfully");
+            
+            // Log the user in to ensure they stay authenticated
+            Auth::login($userModel);
+        } else {
+            Log::error("User model not found during OTP verification for ID: {$user->id}");
+            return redirect()->route('login')->withErrors(['otp' => 'User not found. Please try logging in again.']);
+        }
 
         // Redirect to landing page
         return redirect()->route('landing')->with('success', 'Email verified successfully!');

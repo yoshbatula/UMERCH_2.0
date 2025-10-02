@@ -8,6 +8,7 @@ Route::get('/', function() {
     return Inertia::render('Login');
 });
 
+// Login Routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 
