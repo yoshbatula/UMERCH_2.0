@@ -26,21 +26,21 @@ class LoginController extends Controller {
                     ->orWhere('user_id', $request->email)
                     ->first();
 
-        // If user doesn't exist, return error
+        // If user not found error
         if (!$user) {
             return back()->withErrors([
                 'email' => 'No account found with this email/user ID.',
             ])->withInput($request->except('password'));
         }
 
-        // Check password (direct comparison since passwords aren't hashed)
+        // checked password 
         if ($request->password !== $user->password) {
             return back()->withErrors([
                 'password' => 'The password is incorrect.',
             ])->withInput($request->except('password'));
         }
 
-        // If credentials are correct, redirect to authentication
+        // if the credentials are correct, redirect to authentication
         Auth::login($user);
         $request->session()->regenerate();
         
