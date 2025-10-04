@@ -55,7 +55,6 @@ export default function Authentication({ user, errors: pageErrors }) {
         const otpCode = otp.join('');
         console.log('Attempting to verify OTP:', otpCode);
         
-        // Clear previous errors
         setLocalErrors({});
         
         if (otpCode.length === 6) {
@@ -67,15 +66,15 @@ export default function Authentication({ user, errors: pageErrors }) {
                 },
                 onSuccess: (page) => {
                     console.log('OTP verified successfully - redirecting to landing', page);
-                    // Clear OTP inputs on success
+        
                     setOtp(['', '', '', '', '', '']);
                 },
                 onError: (errors) => {
                     console.log('OTP verification errors:', errors);
                     setLocalErrors(errors);
-                    // Clear OTP inputs on error so user can try again
+                    
                     setOtp(['', '', '', '', '', '']);
-                    // Focus first input
+                   
                     inputRefs.current[0]?.focus();
                 },
                 onFinish: () => {
@@ -92,13 +91,13 @@ export default function Authentication({ user, errors: pageErrors }) {
     const handleResend = () => {
         if (resendCooldown > 0) return;
         
-        // Clear previous errors
+        
         setLocalErrors({});
         
         router.post('/resend-otp', {}, {
             onSuccess: () => {
                 console.log('OTP resent successfully');
-                setResendCooldown(60); // 60 second cooldown
+                setResendCooldown(60); 
             },
             onError: (errors) => {
                 console.log('Resend OTP errors:', errors);
