@@ -3,7 +3,8 @@ import Logo from "@images/Umerch-Logo.png";
 import AccountLogo from "@images/Account.svg";
 import DashboardLogo from "@images/AdminDashboard.svg";
 import InventoryLogo from "@images/InventoryLogo.svg"
-
+import RecordLogsLogo from "@images/RecordLogs.svg"
+import LogoutLogo from "@images/LogoutLogo.svg"
 export default function AdminNav() {
     return (
         <>
@@ -18,7 +19,7 @@ export default function AdminNav() {
                 </div>
             </div>
             {/* // Sidebar */}
-            <div className="bg-[#9C0306] h-[100vh] w-50">
+            <div className="bg-[#9C0306] h-[100vh] w-55">
                 <div className="flex flex-col items-center py-4">
                     <div className="mt-3">
                         <img src={AccountLogo} alt="Account-image" />
@@ -26,22 +27,22 @@ export default function AdminNav() {
                     <div className="text-white text-1xl font-bold text-center mt-2">
                         <p>Admin</p>
                     </div>
-                    {/* Dashboard Link */}
-                    <div className="flex flex-row g-5 justify-center items-center mt-4 text-white">
-                        <img src={DashboardLogo} alt="" className="mr-3"/>
-                        <Link className="mr-9">Dashboard</Link>
+                    {/* Navigation Links */}
+                    <div className="flex justify-start mt-6 mr-10 text-white hover:bg-red-700 p-2 rounded-lg cursor-pointer">
+                        <img src={DashboardLogo} alt="Dashboard" className="w-6 h-6 mr-3 flex-shrink-0"/>
+                        <Link href="#" className="text-sm">Dashboard</Link>
                     </div>
-                    <div className="flex flex-row g-4 justify-center items-center mt-4 text-white">
-                        <img src={DashboardLogo} alt="" className="mr-3"/>
-                        <Link className="mr-9">Inventory</Link>
+                    <div className="flex justify-start mt-4 mr-12 text-white hover:bg-red-700 p-2 rounded-lg cursor-pointer">
+                        <img src={InventoryLogo} alt="Inventory" className="w-6 h-6 mr-3 flex-shrink-0"/>
+                        <Link href="#" className="text-sm">Inventory</Link>
                     </div>
-                    <div className="flex flex-row g-4 justify-center items-center mt-4 text-white">
-                        <img src={DashboardLogo} alt="" className="mr-3"/>
-                        <Link className="mr-9">RecordLogs</Link>
+                    <div className="flex justify-start mt-4 mr-6 text-white hover:bg-red-700 p-2 rounded-lg cursor-pointer">
+                        <img src={RecordLogsLogo} alt="Record Logs" className="w-6 h-6 mr-3 flex-shrink-0"/>
+                        <Link href="#" className="text-sm">Record Logs</Link>
                     </div>
-                    <div className="flex flex-row g-4 justify-center items-center mt-4 text-white">
-                        <img src={DashboardLogo} alt="" className="mr-3"/>
-                        <Link className="mr-9">Logout</Link>
+                    <div className="flex justify-start mt-4 mr-14 text-white hover:bg-red-700 p-2 rounded-lg cursor-pointer">
+                        <img src={LogoutLogo} alt="Logout" className="w-6 h-6 mr-3 flex-shrink-0"/>
+                        <Link href="#" className="text-sm">Logout</Link>
                     </div>
                 </div>
             </div>
