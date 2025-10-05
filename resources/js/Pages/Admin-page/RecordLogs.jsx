@@ -40,7 +40,7 @@ export default function RecordLogs() {
                         <input 
                             type="text" 
                             placeholder="Search logs"
-                            className="block w-80 pl-10 pr-12 py-2 border border-white rounded-lg leading-5 bg-[#F9FAFB] placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-[#9C0306] focus:border-[#9C0306] text-sm"
+                            className="block w-80 pl-10 pr-12 py-2 border border-white rounded-lg leading-5 bg-[#F9FAFB] placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1  text-sm"
                         />
                         
                         <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
