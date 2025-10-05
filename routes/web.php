@@ -5,8 +5,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function() {
+Route::get('/admin', function() {
     return Inertia::render('Login');
+});
+
+Route::get('/', function() {
+    return Inertia::render('Admin-page/RecordLogs');
 });
 
 // Login Routes

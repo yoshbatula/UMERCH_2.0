@@ -1,3 +1,5 @@
+import Layout from "@/Layouts/AdminNav";
+
 export default function RecordLogs() {
     return (
         <div>
@@ -5,3 +7,6 @@ export default function RecordLogs() {
         </div>
     );
 }
+
+RecordLogs.layout = page => <Layout children={page} />
+
