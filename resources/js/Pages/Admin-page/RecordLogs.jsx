@@ -1,6 +1,8 @@
 import Layout from "@/Layouts/AdminNav";
 import AccountLogo from '@images/Account.svg';
 export default function RecordLogs() {
+
+
     return (
         <>
         {/* Record Logs Content */}
@@ -29,7 +31,7 @@ export default function RecordLogs() {
                         
                     </div>
 
-                    {/* Search Input with Icons */}
+                    
                     <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <svg className="w-5 h-5 text-[#9C0306]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -40,8 +42,16 @@ export default function RecordLogs() {
                         <input 
                             type="text" 
                             placeholder="Search logs"
-                            className="block w-80 pl-10 pr-12 py-2 border border-white rounded-lg leading-5 bg-[#F9FAFB] placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1  text-sm"
+                            className="block w-80 pl-10 pr-24 py-2 border border-white rounded-lg leading-5 bg-[#F9FAFB] placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1  text-sm"
                         />
+
+                        <div className="absolute inset-y-0 right-12 flex items-center">
+                            <button className="p-2 bg-white border border-gray-300 border-opacity-20 rounded hover:bg-gray-50 cursor-pointer mr-2">
+                                <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                                </svg>
+                            </button>
+                        </div>
                         
                         <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
                             <button className="p-2 bg-white border border-gray-300 border-opacity-20 rounded hover:bg-gray-50 cursor-pointer">
@@ -53,13 +63,34 @@ export default function RecordLogs() {
                     </div>
                     
                     {/* TABLE LOGS */}
-                    <div className="bg-white rounded-lg shadow-sm border mt-3">
-                        <div className="p-4 border-b">
-                            <p className="text-gray-600 text-sm">Recent user activity logs</p>
-                        </div>
-                        <div className="p-4">
-                            <p className="text-gray-500 text-center py-8">No logs to display yet</p>
-                        </div>
+                    <div className="table-container mt-3">
+                        <table className="min-w-full bg-white border border-gray-200">
+                            <thead>
+                                <tr>
+                                    <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">User</th>
+                                    <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">Action</th>
+                                    <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">Date & Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr className="hover:bg-gray-50">
+                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">Yosh</td>
+                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">Logged In</td>
+                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">2023-10-01 10:00 AM</td>
+                                </tr>
+                                <tr className="hover:bg-gray-50">
+                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">Fletcher</td>
+                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">Logged Out</td>
+                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">2023-10-01 09:30 AM</td>
+                                </tr>
+                                <tr className="hover:bg-gray-50">
+                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">Ryan</td>
+                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">Logged In</td>
+                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">2023-10-01 09:00 AM</td>
+                                </tr>
+                                {/* More rows as needed */}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
