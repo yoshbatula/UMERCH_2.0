@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function AddUsers({ isOpen, onClose }) {
     const [formData, setFormData] = useState({
@@ -8,7 +8,18 @@ export default function AddUsers({ isOpen, onClose }) {
         password: ''
     });
 
-    if (!isOpen) return null;
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        if (isOpen) {
+            setVisible(true);
+        } else {
+            const timer = setTimeout(() => setVisible(false), 200);
+            return () => clearTimeout(timer);
+        }
+    }, [isOpen]);
+
+    if (!isOpen && !visible) return null;
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -20,7 +31,6 @@ export default function AddUsers({ isOpen, onClose }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
         console.log('Form Data:', formData);
         onClose();
     };
@@ -32,8 +42,17 @@ export default function AddUsers({ isOpen, onClose }) {
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-20" onClick={handleBackdropClick}>
-            <div className="bg-white rounded-lg shadow-xl w-full max-w-md mx-4 transform transition-all relative z-10">
+        <div
+            className={`fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm transition-opacity duration-200 ${
+                isOpen ? 'opacity-100' : 'opacity-0'
+            }`}
+            onClick={handleBackdropClick}
+        >
+            <div
+                className={`bg-white rounded-lg shadow-xl w-full max-w-md mx-4 transform transition-all duration-200 ${
+                    isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
+                }`}
+            >
                 {/* Modal Header */}
                 <div className="flex items-center justify-between p-6 border-b border-gray-200">
                     <h2 className="text-xl font-semibold text-gray-900">Add New User</h2>
@@ -41,8 +60,18 @@ export default function AddUsers({ isOpen, onClose }) {
                         onClick={onClose}
                         className="text-gray-400 hover:text-gray-600 transition-colors"
                     >
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        <svg
+                            className="w-6 h-6"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M6 18L18 6M6 6l12 12"
+                            />
                         </svg>
                     </button>
                 </div>
@@ -50,7 +79,6 @@ export default function AddUsers({ isOpen, onClose }) {
                 {/* Modal Body */}
                 <form onSubmit={handleSubmit} className="p-6">
                     <div className="space-y-4">
-                        {/* Name Field */}
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                                 Full Name
@@ -67,7 +95,6 @@ export default function AddUsers({ isOpen, onClose }) {
                             />
                         </div>
 
-                        {/* Email Field */}
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                                 Email Address
@@ -84,7 +111,6 @@ export default function AddUsers({ isOpen, onClose }) {
                             />
                         </div>
 
-                        {/* User ID Field */}
                         <div>
                             <label htmlFor="userId" className="block text-sm font-medium text-gray-700 mb-1">
                                 User ID
@@ -101,7 +127,6 @@ export default function AddUsers({ isOpen, onClose }) {
                             />
                         </div>
 
-                        {/* Password Field */}
                         <div>
                             <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
                                 Password
@@ -119,7 +144,6 @@ export default function AddUsers({ isOpen, onClose }) {
                         </div>
                     </div>
 
-                    {/* Modal Footer */}
                     <div className="flex justify-end space-x-3 mt-6 pt-4 border-t border-gray-200">
                         <button
                             type="button"
