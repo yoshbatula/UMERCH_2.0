@@ -3,6 +3,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\AuthenticationController;
 use App\Http\Controllers\Admin\AddUsersController;
 use App\Http\Controllers\Admin\UpdateUsersController;
+use App\Http\Controllers\Admin\DeleteUsersController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -20,7 +21,7 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 // Admin Users Routes
 Route::post('/admin/users', [AddUsersController::class, 'addUser'])->name('admin.users.store');
 Route::put('/admin/users/{id}', [UpdateUsersController::class, 'updateUser'])->name('admin.users.update');
-Route::delete('/admin/users/{id}', [AddUsersController::class, 'deleteUser'])->name('admin.users.delete');
+Route::delete('/admin/users/{id}', [DeleteUsersController::class, 'deleteUser'])->name('admin.users.delete');
 
 // OTP Authentication Routes
 Route::get('/authentication', [AuthenticationController::class, 'showVerificationForm'])->name('authentication');

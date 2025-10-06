@@ -2,6 +2,8 @@ import Layout from "@/Layouts/AdminNav";
 import AccountLogo from '@images/Account.svg';
 import AddModal from './modals/AddUsers'
 import UpdateModal from './modals/UpdateUsers'
+import { Link } from '@inertiajs/react';
+import DeleteModal from './modals/DeleteModal'
 import { useState, useEffect } from "react";
 
 export default function RecordLogs({ users = [] }) {
@@ -9,6 +11,7 @@ export default function RecordLogs({ users = [] }) {
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
     const openAddModal = () => {
         setIsAddModalOpen(true);
@@ -19,6 +22,11 @@ export default function RecordLogs({ users = [] }) {
         setIsUpdateModalOpen(true);
     };
 
+    const openDeleteModal = (user) => {
+        setSelectedUser(user);
+        setIsDeleteModalOpen(true);
+    }
+
     const closeAddModal = () => {
         setIsAddModalOpen(false);
     };
@@ -28,6 +36,10 @@ export default function RecordLogs({ users = [] }) {
         setSelectedUser(null);
     };
 
+    const closeDeleteModal = () => {
+        setIsDeleteModalOpen(false);
+        setSelectedUser(null);
+    }
     const handleDelete = async (userId) => {
         if (confirm('Are you sure you want to delete this user?')) {
             try {
@@ -140,7 +152,7 @@ export default function RecordLogs({ users = [] }) {
                                                     Update
                                                 </button>
                                                 <button 
-                                                    onClick={() => handleDelete(user.id)}
+                                                    onClick={() => openDeleteModal(user)}
                                                     className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
                                                 >
                                                     Delete
@@ -165,6 +177,11 @@ export default function RecordLogs({ users = [] }) {
             <UpdateModal 
                 isOpen={isUpdateModalOpen} 
                 onClose={closeUpdateModal} 
+                user={selectedUser}
+            />
+            <DeleteModal 
+                isOpen={isDeleteModalOpen} 
+                onClose={closeDeleteModal} 
                 user={selectedUser}
             />
         </>
