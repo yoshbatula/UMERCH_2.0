@@ -1,13 +1,72 @@
 import Layout from "@/Layouts/AdminNav";
 import AccountLogo from '@images/Account.svg';
 import AddModal from './modals/AddUsers'
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 export default function RecordLogs() {
     
+    const [users, setUsers] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedUser, setSelectedUser] = useState(null);
+    const [form, setForm] = useState({
+        name: '',
+        email: '',
+        userId: '',
+        password: ''
+    });
 
-    const openModal = () => setIsModalOpen(true);
-    const closeModal = () => setIsModalOpen(false);
+    // fetch users
+    useEffect(() => {
+        fetch("/api/users")
+        .then((res) => res.json())
+        .then((data) => setUsers(data))
+        .catch(error => console.error('Error:', error));
+    }, []);
+
+    // Open modal for add users or update
+    const openModal = (users = null) => {
+        setSelectedUser(users);
+        setForm(users ? {
+            name: users.name,
+            email: users.email,
+            userId: users.userId,
+            password: ''
+        } : {
+            name: '',
+            email: '',
+            userId: '',
+            password: ''
+        });
+        setIsModalOpen(true);
+    };
+
+    const handleSave = async(e) => {
+        e.preventDefault();
+
+        const method = selectedUser ? 'PUT' : 'POST';
+        const url = selectedUser ? `/api/users/${selectedUser.id}` : '/api/users';
+
+        await fetch(url, {
+            method,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(form),
+        });
+
+        setIsModalOpen(false);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedUser(null);
+        setForm({
+            name: '',
+            email: '',
+            userId: '',
+            password: ''
+        });
+    };
 
     return (
         <>
@@ -60,7 +119,7 @@ export default function RecordLogs() {
                                 </svg>
                             </button>
                         </div>
-                        
+
                         <AddModal isOpen={isModalOpen} onClose={closeModal} />
                         
                         {/* ICON FILTER */}
@@ -86,11 +145,12 @@ export default function RecordLogs() {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr className="hover:bg-gray-50">
-                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">0</td>
-                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">Yosh Batula</td>
-                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">544580</td>
-                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">y.batula.544580@umindanao.edu.ph</td>
+                                {users.map((user, index) => (
+                                    <tr className="hover:bg-gray-50">
+                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">{user.id}</td>
+                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">{user.name}</td>
+                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">{user.user_id}</td>
+                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">{user.email}</td>
                                     <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">
                                         <form action="#" className="flex flex-row gap-3">
                                             <button className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
@@ -102,17 +162,12 @@ export default function RecordLogs() {
                                         </form>
                                     </td>
                                 </tr>
-                                <tr className="hover:bg-gray-50">
-                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">1</td>
-                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">Logged Out</td>
-                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">2023-10-01 09:30 AM</td>
-                                </tr>
-                                <tr className="hover:bg-gray-50">
-                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">2</td>
-                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">Logged In</td>
-                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">2023-10-01 09:00 AM</td>
-                                </tr>
-                                {/* More rows as needed */}
+                                ))}
+                                {users.length === 0 && (
+                                    <tr>
+                                        <td className="p-4 text-center" colSpan="5">No users found</td>
+                                    </tr>
+                                )}
                             </tbody>
                         </table>
                     </div>
