@@ -1,6 +1,7 @@
 import Layout from "@/Layouts/AdminNav";
 import AccountLogo from '@images/Account.svg';
 import AddModal from './modals/AddUsers'
+import UpdateModal from './modals/UpdateUsers'
 import { useState, useEffect } from "react";
 
 export default function RecordLogs({ users = [] }) {
@@ -116,7 +117,9 @@ export default function RecordLogs({ users = [] }) {
                             </button>
                         </div>
 
+                        {/* Modals */}
                         <AddModal isOpen={isModalOpen} onClose={closeModal} />
+                        <UpdateModal isOpen={isModalOpen} onClose={closeModal} />
                         
                         {/* ICON FILTER */}
                         <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
