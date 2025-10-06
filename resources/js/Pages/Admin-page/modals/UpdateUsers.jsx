@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useForm } from '@inertiajs/react';
 
-export default function UpdateUsers({ isOpen, onClose }) {
-    const { data, setData, post, processing, errors, reset } = useForm({
+export default function UpdateUsers({ isOpen, onClose, user }) {
+    const { data, setData, put, processing, errors, reset, clearErrors } = useForm({
         name: '',
         email: '',
         userId: '',
@@ -12,13 +12,23 @@ export default function UpdateUsers({ isOpen, onClose }) {
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
-        if (isOpen) {
+        if (isOpen && user) {
+            setData({
+                name: user.name || '',
+                email: user.email || '',
+                userId: user.user_id || '',
+                password: '' 
+            });
+            // Clear any previous errors when opening modal
+            clearErrors();
+            setVisible(true);
+        } else if (isOpen) {
             setVisible(true);
         } else {
             const timer = setTimeout(() => setVisible(false), 200);
             return () => clearTimeout(timer);
         }
-    }, [isOpen]);
+    }, [isOpen, user]);
 
     if (!isOpen && !visible) return null;
 
@@ -30,11 +40,24 @@ export default function UpdateUsers({ isOpen, onClose }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        post('/admin/users', {
+        console.log('handleSubmit called with user:', user);
+        console.log('Form data:', data);
+        console.log('Current errors object:', errors);
+        
+        if (!user || !user.id) {
+            alert('No user selected for update');
+            return;
+        }
+        
+        console.log('Sending PUT request to:', `/admin/users/${user.id}`);
+        console.log('Data being sent:', data);
+        
+        put(`/admin/users/${user.id}`, {
             onSuccess: () => {
                 reset();
                 onClose();
-                alert('User added successfully!');
+                alert('User updated successfully!');
+                window.location.reload();
             },
             onError: (errors) => {
                 console.error('Validation errors:', errors);
@@ -135,6 +158,20 @@ export default function UpdateUsers({ isOpen, onClose }) {
                                 required
                             />
                             {errors.userId && <p className="text-red-500 text-sm mt-1">{errors.userId}</p>}
+                        </div>
+                        <div>
+                            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+                                Password
+                            </label>
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                value={data.password}
+                                onChange={handleInputChange}
+                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9C0306] focus:border-[#9C0306]"
+                                placeholder="Leave blank to keep current password"
+                            />
                         </div>
                     </div>
 

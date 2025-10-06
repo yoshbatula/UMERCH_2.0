@@ -6,41 +6,26 @@ import { useState, useEffect } from "react";
 
 export default function RecordLogs({ users = [] }) {
     
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+    const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
-    const [form, setForm] = useState({
-        name: '',
-        email: '',
-        userId: '',
-        password: ''
-    });
 
-    // Open modal for add users or update
-    const openModal = (users = null) => {
-        setSelectedUser(users);
-        setForm(users ? {
-            name: users.name,
-            email: users.email,
-            userId: users.userId,
-            password: ''
-        } : {
-            name: '',
-            email: '',
-            userId: '',
-            password: ''
-        });
-        setIsModalOpen(true);
+    const openAddModal = () => {
+        setIsAddModalOpen(true);
     };
 
-    const closeModal = () => {
-        setIsModalOpen(false);
+    const openUpdateModal = (user) => {
+        setSelectedUser(user);
+        setIsUpdateModalOpen(true);
+    };
+
+    const closeAddModal = () => {
+        setIsAddModalOpen(false);
+    };
+
+    const closeUpdateModal = () => {
+        setIsUpdateModalOpen(false);
         setSelectedUser(null);
-        setForm({
-            name: '',
-            email: '',
-            userId: '',
-            password: ''
-        });
     };
 
     const handleDelete = async (userId) => {
@@ -110,16 +95,12 @@ export default function RecordLogs({ users = [] }) {
 
                         {/* ICON PLUS */}
                         <div className="absolute inset-y-0 right-12 flex items-center">
-                            <button className="p-2 bg-white border border-gray-300 border-opacity-20 rounded hover:bg-gray-50 cursor-pointer mr-2" onClick={() => openModal()}>
+                            <button className="p-2 bg-white border border-gray-300 border-opacity-20 rounded hover:bg-gray-50 cursor-pointer mr-2" onClick={openAddModal}>
                                 <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                                 </svg>
                             </button>
                         </div>
-
-                        {/* Modals */}
-                        <AddModal isOpen={isModalOpen} onClose={closeModal} />
-                        <UpdateModal isOpen={isModalOpen} onClose={closeModal} />
                         
                         {/* ICON FILTER */}
                         <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
@@ -153,7 +134,7 @@ export default function RecordLogs({ users = [] }) {
                                         <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">
                                             <div className="flex flex-row gap-3">
                                                 <button 
-                                                    onClick={() => openModal(user)}
+                                                    onClick={() => openUpdateModal(user)}
                                                     className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
                                                 >
                                                     Update
@@ -178,6 +159,14 @@ export default function RecordLogs({ users = [] }) {
                     </div>
                 </div>
             </div>
+
+            {/* Modals */}
+            <AddModal isOpen={isAddModalOpen} onClose={closeAddModal} />
+            <UpdateModal 
+                isOpen={isUpdateModalOpen} 
+                onClose={closeUpdateModal} 
+                user={selectedUser}
+            />
         </>
     );
 }
