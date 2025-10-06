@@ -37,7 +37,7 @@ class AuthenticationController extends Controller {
     private function generateAndSendOtp($user)
     {
         try {
-            // Generate 6-digit OTP
+            
             $otp = str_pad(random_int(0, 999999), 6, '0', STR_PAD_LEFT);
             
            
@@ -49,10 +49,8 @@ class AuthenticationController extends Controller {
             Log::info("Mail configuration - Host: " . config('mail.mailers.smtp.host'));
             Log::info("Mail configuration - From: " . config('mail.from.address'));
             
-            // Send OTP via email
             Mail::to($user->email)->send(new \App\Mail\OtpMail($otp, $user));
             
-            // Check for mail failures
             if (count(Mail::failures()) > 0) {
                 Log::error("Mail failures detected for {$user->email}");
                 return false;
@@ -83,7 +81,6 @@ class AuthenticationController extends Controller {
             return redirect()->route('login')->withErrors(['error' => 'Session expired. Please login again.']);
         }
 
-        // Get stored OTP from cache
         $storedOtp = Cache::get("otp_{$user->id}");
         
         Log::info("OTP Verification - Submitted: {$request->otp}, Stored: " . ($storedOtp ?: 'NOT FOUND'));
@@ -149,7 +146,6 @@ class AuthenticationController extends Controller {
         // Generate and send new OTP
         $emailSent = $this->generateAndSendOtp($user);
         
-        // Store last sent time
         Cache::put("otp_last_sent_{$user->id}", now(), now()->addMinutes(10));
 
         if ($emailSent) {

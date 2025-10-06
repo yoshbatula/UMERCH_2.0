@@ -10,16 +10,14 @@ Route::get('/admin', function() {
     return Inertia::render('Login');
 });
 
-Route::get('/', function() {
-    return Inertia::render('Admin-page/RecordLogs');
-});
+Route::get('/', [AddUsersController::class, 'index'])->name('admin.users.index');
 
 // Login Routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 
-// add user route
-Route::apiResource('users', AddUsersController::class);
+// Admin Users Routes
+Route::post('/admin/users', [AddUsersController::class, 'addUser'])->name('admin.users.store');
 
 // OTP Authentication Routes
 Route::get('/authentication', [AuthenticationController::class, 'showVerificationForm'])->name('authentication');

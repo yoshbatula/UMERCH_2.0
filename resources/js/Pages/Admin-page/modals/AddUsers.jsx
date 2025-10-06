@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useForm } from '@inertiajs/react';
 
 export default function AddUsers({ isOpen, onClose }) {
-    const [formData, setFormData] = useState({
+    const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         email: '',
         userId: '',
@@ -23,16 +24,22 @@ export default function AddUsers({ isOpen, onClose }) {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
+        setData(name, value);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Form Data:', formData);
-        onClose();
+        
+        post('/admin/users', {
+            onSuccess: () => {
+                reset();
+                onClose();
+                alert('User added successfully!');
+            },
+            onError: (errors) => {
+                console.error('Validation errors:', errors);
+            }
+        });
     };
 
     const handleBackdropClick = (e) => {
@@ -87,12 +94,13 @@ export default function AddUsers({ isOpen, onClose }) {
                                 type="text"
                                 id="name"
                                 name="name"
-                                value={formData.name}
+                                value={data.name}
                                 onChange={handleInputChange}
                                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9C0306] focus:border-[#9C0306]"
                                 placeholder="Enter full name"
                                 required
                             />
+                            {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
                         </div>
 
                         <div>
@@ -103,12 +111,13 @@ export default function AddUsers({ isOpen, onClose }) {
                                 type="email"
                                 id="email"
                                 name="email"
-                                value={formData.email}
+                                value={data.email}
                                 onChange={handleInputChange}
                                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9C0306] focus:border-[#9C0306]"
                                 placeholder="Enter email address"
                                 required
                             />
+                            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                         </div>
 
                         <div>
@@ -119,12 +128,13 @@ export default function AddUsers({ isOpen, onClose }) {
                                 type="text"
                                 id="userId"
                                 name="userId"
-                                value={formData.userId}
+                                value={data.userId}
                                 onChange={handleInputChange}
                                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9C0306] focus:border-[#9C0306]"
                                 placeholder="Enter user ID"
                                 required
                             />
+                            {errors.userId && <p className="text-red-500 text-sm mt-1">{errors.userId}</p>}
                         </div>
 
                         <div>
@@ -135,12 +145,13 @@ export default function AddUsers({ isOpen, onClose }) {
                                 type="password"
                                 id="password"
                                 name="password"
-                                value={formData.password}
+                                value={data.password}
                                 onChange={handleInputChange}
                                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9C0306] focus:border-[#9C0306]"
                                 placeholder="Enter password"
                                 required
                             />
+                            {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
                         </div>
                     </div>
 
@@ -154,9 +165,10 @@ export default function AddUsers({ isOpen, onClose }) {
                         </button>
                         <button
                             type="submit"
-                            className="px-4 py-2 text-sm font-medium text-white bg-[#9C0306] border border-transparent rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-[#9C0306] focus:ring-offset-2 transition-colors"
+                            disabled={processing}
+                            className="px-4 py-2 text-sm font-medium text-white bg-[#9C0306] border border-transparent rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-[#9C0306] focus:ring-offset-2 transition-colors disabled:opacity-50"
                         >
-                            Add User
+                            {processing ? 'Adding...' : 'Add User'}
                         </button>
                     </div>
                 </form>

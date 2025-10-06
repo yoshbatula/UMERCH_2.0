@@ -3,9 +3,8 @@ import AccountLogo from '@images/Account.svg';
 import AddModal from './modals/AddUsers'
 import { useState, useEffect } from "react";
 
-export default function RecordLogs() {
+export default function RecordLogs({ users = [] }) {
     
-    const [users, setUsers] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
     const [form, setForm] = useState({
@@ -14,14 +13,6 @@ export default function RecordLogs() {
         userId: '',
         password: ''
     });
-
-    // fetch users
-    useEffect(() => {
-        fetch("/api/users")
-        .then((res) => res.json())
-        .then((data) => setUsers(data))
-        .catch(error => console.error('Error:', error));
-    }, []);
 
     // Open modal for add users or update
     const openModal = (users = null) => {
@@ -40,23 +31,6 @@ export default function RecordLogs() {
         setIsModalOpen(true);
     };
 
-    const handleSave = async(e) => {
-        e.preventDefault();
-
-        const method = selectedUser ? 'PUT' : 'POST';
-        const url = selectedUser ? `/api/users/${selectedUser.id}` : '/api/users';
-
-        await fetch(url, {
-            method,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(form),
-        });
-
-        setIsModalOpen(false);
-    };
-
     const closeModal = () => {
         setIsModalOpen(false);
         setSelectedUser(null);
@@ -66,6 +40,28 @@ export default function RecordLogs() {
             userId: '',
             password: ''
         });
+    };
+
+    const handleDelete = async (userId) => {
+        if (confirm('Are you sure you want to delete this user?')) {
+            try {
+                const response = await fetch(`/admin/users/${userId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    }
+                });
+                
+                if (response.ok) {
+                    window.location.reload();
+                } else {
+                    alert('Failed to delete user');
+                }
+            } catch (error) {
+                console.error('Error deleting user:', error);
+                alert('Error deleting user');
+            }
+        }
     };
 
     return (
@@ -145,23 +141,29 @@ export default function RecordLogs() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {users.map((user, index) => (
-                                    <tr className="hover:bg-gray-50">
-                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">{user.id}</td>
-                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">{user.name}</td>
-                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">{user.user_id}</td>
-                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">{user.email}</td>
-                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">
-                                        <form action="#" className="flex flex-row gap-3">
-                                            <button className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
-                                                Update
-                                            </button>
-                                            <button className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
-                                                Delete
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                {users.map((user) => (
+                                    <tr key={user.id} className="hover:bg-gray-50">
+                                        <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">{user.id}</td>
+                                        <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">{user.name}</td>
+                                        <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">{user.user_id}</td>
+                                        <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">{user.email}</td>
+                                        <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">
+                                            <div className="flex flex-row gap-3">
+                                                <button 
+                                                    onClick={() => openModal(user)}
+                                                    className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
+                                                >
+                                                    Update
+                                                </button>
+                                                <button 
+                                                    onClick={() => handleDelete(user.id)}
+                                                    className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                                                >
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 ))}
                                 {users.length === 0 && (
                                     <tr>
