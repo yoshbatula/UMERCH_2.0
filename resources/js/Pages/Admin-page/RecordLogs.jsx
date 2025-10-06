@@ -1,10 +1,17 @@
 import Layout from "@/Layouts/AdminNav";
 import AccountLogo from '@images/Account.svg';
+import AddModal from './modals/AddUsers'
+import { useState } from "react";
 export default function RecordLogs() {
+    
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
 
     return (
         <>
+        
         {/* Record Logs Content */}
             <div className="flex flex-col justify-start space-y-6">
                 <div className="px-9 mt-7">
@@ -45,14 +52,18 @@ export default function RecordLogs() {
                             className="block w-80 pl-10 pr-24 py-2 border border-white rounded-lg leading-5 bg-[#F9FAFB] placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1  text-sm"
                         />
 
+                        {/* ICON PLUS */}
                         <div className="absolute inset-y-0 right-12 flex items-center">
-                            <button className="p-2 bg-white border border-gray-300 border-opacity-20 rounded hover:bg-gray-50 cursor-pointer mr-2">
+                            <button className="p-2 bg-white border border-gray-300 border-opacity-20 rounded hover:bg-gray-50 cursor-pointer mr-2" onClick={() => openModal()}>
                                 <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                                 </svg>
                             </button>
                         </div>
                         
+                        <AddModal isOpen={isModalOpen} onClose={closeModal} />
+                        
+                        {/* ICON FILTER */}
                         <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
                             <button className="p-2 bg-white border border-gray-300 border-opacity-20 rounded hover:bg-gray-50 cursor-pointer">
                                 <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -67,24 +78,37 @@ export default function RecordLogs() {
                         <table className="min-w-full bg-white border border-gray-200">
                             <thead>
                                 <tr>
-                                    <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">User</th>
+                                    <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">ID</th>
+                                    <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">Name</th>
+                                    <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">UserID</th>
+                                    <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">Email</th>
                                     <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">Action</th>
-                                    <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">Date & Time</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr className="hover:bg-gray-50">
-                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">Yosh</td>
-                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">Logged In</td>
-                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">2023-10-01 10:00 AM</td>
+                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">0</td>
+                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">Yosh Batula</td>
+                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">544580</td>
+                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">y.batula.544580@umindanao.edu.ph</td>
+                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">
+                                        <form action="#" className="flex flex-row gap-3">
+                                            <button className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
+                                                Update
+                                            </button>
+                                            <button className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </td>
                                 </tr>
                                 <tr className="hover:bg-gray-50">
-                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">Fletcher</td>
+                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">1</td>
                                     <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">Logged Out</td>
                                     <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">2023-10-01 09:30 AM</td>
                                 </tr>
                                 <tr className="hover:bg-gray-50">
-                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">Ryan</td>
+                                    <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">2</td>
                                     <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">Logged In</td>
                                     <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">2023-10-01 09:00 AM</td>
                                 </tr>
