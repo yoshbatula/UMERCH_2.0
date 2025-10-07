@@ -253,6 +253,8 @@ export default function RecordLogs({ users = [], recordlogs = [] }) {
                 onClose={closeDeleteModal} 
                 user={selectedUser}
             />
+
+            {/* Some of the ui needs to be enhanced */}
         </>
     );
 }
