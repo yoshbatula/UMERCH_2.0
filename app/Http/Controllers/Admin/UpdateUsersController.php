@@ -27,7 +27,7 @@ class UpdateUsersController extends Controller {
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users,email,' . $id,
                 'userId' => 'required|string|max:255|unique:users,user_id,' . $id,
-                'password' => 'nullable|string|min:8', // Password is optional
+                'password' => 'nullable|string|min:8', 
             ]);
 
             $user->name = $request->name;

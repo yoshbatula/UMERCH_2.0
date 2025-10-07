@@ -5,7 +5,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
+use App\Models\User;
+use App\Models\Recordlogs;
+use Carbon\Carbon;
 
 class LoginController extends Controller {
     
@@ -19,7 +23,7 @@ class LoginController extends Controller {
             'password' => 'required|string',
         ]);
 
-        $user = \App\Models\User::where('email', $request->email)
+        $user = User::where('email', $request->email)
                     ->orWhere('user_id', $request->email)
                     ->first();
 
@@ -29,7 +33,14 @@ class LoginController extends Controller {
             ])->withInput($request->except('password'));
         }
 
-        if ($request->password !== $user->password) {
+        Log::info('Login attempt', [
+            'email' => $request->email,
+            'password_provided' => $request->password,
+            'user_found' => $user ? 'Yes' : 'No',
+            'password_check' => $user ? Hash::check($request->password, $user->password) : 'No user'
+        ]);
+
+        if (!Hash::check($request->password, $user->password)) {
             return back()->withErrors([
                 'password' => 'The password is incorrect.',
             ])->withInput($request->except('password'));
@@ -38,6 +49,12 @@ class LoginController extends Controller {
         Auth::login($user);
         $request->session()->regenerate();
         
-        return redirect('/authentication');
+        Recordlogs::create([
+            'User_name' => $user->name,
+            'User_email' => $user->email,
+            'logged_in_at' => Carbon::now('Asia/Manila'),
+        ]);
+        
+        return redirect()->route('authentication');
     }
 }

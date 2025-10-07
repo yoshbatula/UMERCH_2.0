@@ -6,12 +6,15 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
+use App\Models\Recordlogs;
 
 class AddUsersController extends Controller {
     public function index() {
         $users = User::all();
+        $recordlogs = Recordlogs::all();
         return Inertia::render('Admin-page/RecordLogs', [
-            'users' => $users
+            'users' => $users,
+            'recordlogs' => $recordlogs
         ]);
     }
 
@@ -34,7 +37,6 @@ class AddUsersController extends Controller {
             ]);
 
             Log::info('User created successfully:', ['user_id' => $user->id, 'email' => $user->email]);
-
             return redirect()->back()->with('success', 'User added successfully!');
             
         } catch (\Illuminate\Validation\ValidationException $e) {

@@ -6,7 +6,7 @@ import { Link } from '@inertiajs/react';
 import DeleteModal from './modals/DeleteModal'
 import { useState, useEffect } from "react";
 
-export default function RecordLogs({ users = [] }) {
+export default function RecordLogs({ users = [], recordlogs = [] }) {
     
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
@@ -76,7 +76,7 @@ export default function RecordLogs({ users = [] }) {
                     <div className="bg-[#9C0306] flex items-center justify-between rounded-2xl w-80 h-32 p-6 shadow-lg hover:shadow-xl transition-shadow">
                         <div className="flex flex-col">
                             <h2 className="text-white text-[14px] font-medium">Total login user</h2>
-                            <p className="text-red-100 text-[16px] font-medium mt-1">15</p>
+                            <p className="text-red-100 text-[16px] font-medium mt-1">{recordlogs.length}</p>
                         </div>
                         <div>
                             <img src={AccountLogo} alt="" />
@@ -128,7 +128,7 @@ export default function RecordLogs({ users = [] }) {
                     <div className="table-container mt-3">
                         <table className="min-w-full bg-white border border-gray-200">
                             <thead>
-                                <tr>
+                                <tr className="text-center">
                                     <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">ID</th>
                                     <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">Name</th>
                                     <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">UserID</th>
@@ -164,6 +164,75 @@ export default function RecordLogs({ users = [] }) {
                                 {users.length === 0 && (
                                     <tr>
                                         <td className="p-4 text-center" colSpan="5">No users found</td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                {/* Record Logs Section */}
+                <div className="px-9 mt-4">
+                    <div className="flex justify-between items-center mb-6">
+                        <h2 className="text-black font-bold text-2xl">Record Logs</h2>
+
+                    </div>
+
+                    
+                    <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg className="w-5 h-5 text-[#9C0306]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </div>
+                        
+                        <input 
+                            type="text" 
+                            placeholder="Search logs"
+                            className="block w-80 pl-10 pr-24 py-2 border border-white rounded-lg leading-5 bg-[#F9FAFB] placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1  text-sm"
+                        />
+                        
+                        {/* ICON FILTER */}
+                        <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
+                            <button className="p-2 bg-white border border-gray-300 border-opacity-20 rounded hover:bg-gray-50 cursor-pointer">
+                                <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div className="table-container mt-3">
+                        <table className="min-w-full bg-white border border-gray-200">
+                            <thead>
+                                <tr>
+                                    <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">Name</th>
+                                    <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">Email</th>
+                                    <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">Logged_In</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {recordlogs.map((log) => (
+                                    <tr key={log.id} className="hover:bg-gray-50">
+                                        <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">{log.User_name}</td>
+                                        <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">{log.User_email}</td>
+                                        <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">
+                                            {new Date(log.logged_in_at).toLocaleString('en-US', {
+                                                timeZone: 'Asia/Manila',
+                                                year: 'numeric',
+                                                month: '2-digit',
+                                                day: '2-digit',
+                                                hour: '2-digit',
+                                                minute: '2-digit',
+                                                second: '2-digit',
+                                                hour12: true
+                                            })}
+                                        </td>
+                                    </tr>
+                                ))}
+                                {recordlogs.length === 0 && (
+                                    <tr>
+                                        <td className="p-4 text-center" colSpan="3">No login records found</td>
                                     </tr>
                                 )}
                             </tbody>

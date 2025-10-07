@@ -9,7 +9,3 @@
 @theme {
     --font-sans: 'Montserrat', 'Cormonant Garamond';
 }
-
-body {
-    overflow:hidden;
-}

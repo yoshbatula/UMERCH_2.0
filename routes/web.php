@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/admin', function() {
+Route::get('/', function() {
     return Inertia::render('Login');
 });
 
-Route::get('/', [AddUsersController::class, 'index'])->name('admin.users.index');
+Route::get('/admin', [AddUsersController::class, 'index'])->name('admin.users.index');
 
 // Login Routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
