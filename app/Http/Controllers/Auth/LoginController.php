@@ -55,6 +55,6 @@ class LoginController extends Controller {
             'logged_in_at' => Carbon::now('Asia/Manila'),
         ]);
         
-        return redirect()->route('authentication');
+        return redirect()->route('authentication'); 
     }
 }
