@@ -59,6 +59,7 @@ export default function Login() {
         });
     }
 
+    // just adding some slider animation
     return (
         <>
             <div className='bg-[#f6f6f6] flex flex-col w-full h-[120vh]'>
