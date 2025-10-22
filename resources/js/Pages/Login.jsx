@@ -4,7 +4,7 @@ import Layout from '@/Layouts/navbar';
 import { useForm } from '@inertiajs/react';
 import { useState, useEffect } from 'react';
 import UmerchLogo from '../../images/Umerch-Logo.png'
-import UmerchDiscounted from '../../images/um2.jpg'
+import UmerchDiscountedProduct from '../../images/um2.jpg'
 export default function Login() {
     const { data, setData, post, processing, errors } = useForm({
         email: '',
@@ -12,37 +12,6 @@ export default function Login() {
         password: '',
         rememberMe: false,
     });
-
-    const [currentSlide, setCurrentSlide] = useState(0);
-
-    const productImages = [
-        UmerchDiscounted,
-        UmerchDiscounted, 
-        UmerchDiscounted, 
-        UmerchDiscounted, 
-    ];
-
-    
-    useEffect(() => {
-        const slideInterval = setInterval(() => {
-            setCurrentSlide((prev) => (prev + 1) % productImages.length);
-        }, 3000); // 3 seconds
-
-        return () => clearInterval(slideInterval);
-    }, [productImages.length]);
-
-    
-    const nextSlide = () => {
-        setCurrentSlide((prev) => (prev + 1) % productImages.length);
-    };
-
-    const prevSlide = () => {
-        setCurrentSlide((prev) => (prev - 1 + productImages.length) % productImages.length);
-    };
-
-    const goToSlide = (index) => {
-        setCurrentSlide(index);
-    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -59,7 +28,7 @@ export default function Login() {
 
     return (
         <>
-            <div className='bg-[#f6f6f6] flex flex-col w-full h-[120vh]'>
+            <div className='bg-[#f6f6f6] flex flex-col w-full h-[110vh]'>
                 {/* BACKGROUND IMAGE */}
                 <div className='relative'>
                     <img src={umbg} alt="UM-LOGO" className='w-full h-full object-cover'/>
@@ -85,8 +54,9 @@ export default function Login() {
                             </form>
                         </div>
                     </div>
+
                     {/* LOGIN FORM */}
-                    <div className='absolute inset-0 bg-black opacity-75 rounded-[15px] mt-20 ml-240 w-110 h-125'>
+                    <div className='absolute inset-0 bg-black opacity-75 rounded-[15px] mt-25 ml-260 w-110 h-130'>
                         <form onSubmit={handleSubmit}>
                             <div className='flex flex-col justify-items-end text-center'>
                             <img src={loginlogo} alt="" className='w-50 ml-31'/>
@@ -114,7 +84,7 @@ export default function Login() {
                                 </svg>
                             </div>
                             {errors.email && (
-                                <div className="text-red-400 text-sm mt-1 ml-2">
+                                <div className="text-red-400 text-sm mt-1 px-2">
                                     {errors.email}
                                 </div>
                             )}
@@ -140,12 +110,12 @@ export default function Login() {
                                 </svg>
                             </div>
                             {errors.password && (
-                                <div className="text-red-400 text-sm mt-1 ml-2">
+                                <div className="text-red-400 text-sm mt-2 px-2">
                                     {errors.password}
                                 </div>
                             )}
                         </div>
-                        <div className='flex flex-row justify-between mt-5 ml-18'>
+                        <div className='flex flex-row justify-between mt-3 ml-18'>
                            <div className='text-white flex items-center'>
                                 <input 
                                     type="checkbox"
@@ -201,70 +171,10 @@ export default function Login() {
                 </div>
 
                 {/* Discounted products - Slider */}
-                <div className='flex flex-col items-center mt-2'>    
-                    <div className='relative w-full max-w-4xl mx-auto'>
-                        {/* Slider Container */}
-                        <div className='relative h-96 overflow-hidden rounded-2xl shadow-2xl'>
-                            {/* Image Container */}
-                            <div 
-                                className='flex transition-transform duration-500 ease-in-out h-full'
-                                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                            >
-                                {productImages.map((image, index) => (
-                                    <div key={index} className='flex-shrink-0 w-full h-full relative'>
-                                        <img 
-                                            src={image} 
-                                            className='w-full h-full object-cover' 
-                                            alt={`Product ${index + 1}`} 
-                                        />
-                                        {/* Overlay with product info */}
-                                        <div className='absolute inset-0 bg-gradient-to-t from-black/50 to-transparent'>
-                                            <div className='absolute bottom-6 left-6 text-white'>
-                                                <h3 className='text-2xl font-bold mb-2'>Product {index + 1}</h3>
-                                                <p className='text-lg'>Special Discount Available</p>
-                                                <button className='mt-3 px-6 py-2 bg-[#FFB600] hover:bg-[#7A0204] text-white rounded-lg transition-colors'>
-                                                    SHOP NOW
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                            
-                            {/* Navigation Arrows */}
-                            <button 
-                                onClick={prevSlide}
-                                className='absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-200 backdrop-blur-sm'
-                            >
-                                <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                                    <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M15 19l-7-7 7-7' />
-                                </svg>
-                            </button>
-                            
-                            <button 
-                                onClick={nextSlide}
-                                className='absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-200 backdrop-blur-sm'
-                            >
-                                <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                                    <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
-                                </svg>
-                            </button>
-                            
-                            {/* Slide Indicators */}
-                            <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2'>
-                                {productImages.map((_, index) => (
-                                    <button
-                                        key={index}
-                                        onClick={() => goToSlide(index)}
-                                        className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                                            currentSlide === index 
-                                                ? 'bg-white scale-110' 
-                                                : 'bg-white/50 hover:bg-white/75'
-                                        }`}
-                                    />
-                                ))}
-                            </div>
-                        </div>
+                <div className='flex flex-col justify-center items-center mt-5'>
+                    {/* Product image */}
+                    <div className='w-120'>
+                        <img src={UmerchDiscountedProduct} alt="" />
                     </div>
                 </div>
             </div>
