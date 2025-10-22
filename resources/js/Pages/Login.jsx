@@ -13,27 +13,25 @@ export default function Login() {
         rememberMe: false,
     });
 
-    // Slider state and logic
     const [currentSlide, setCurrentSlide] = useState(0);
-    
-    // Sample product images (you can replace with your actual product images)
+
     const productImages = [
         UmerchDiscounted,
-        UmerchDiscounted, // Replace with different product images
-        UmerchDiscounted, // Replace with different product images
-        UmerchDiscounted, // Replace with different product images
+        UmerchDiscounted, 
+        UmerchDiscounted, 
+        UmerchDiscounted, 
     ];
 
-    // Auto-slide functionality
+    
     useEffect(() => {
         const slideInterval = setInterval(() => {
             setCurrentSlide((prev) => (prev + 1) % productImages.length);
-        }, 3000); // Change slide every 3 seconds
+        }, 3000); // 3 seconds
 
         return () => clearInterval(slideInterval);
     }, [productImages.length]);
 
-    // Manual slide navigation
+    
     const nextSlide = () => {
         setCurrentSlide((prev) => (prev + 1) % productImages.length);
     };
@@ -59,7 +57,6 @@ export default function Login() {
         });
     }
 
-    // just adding some slider animation
     return (
         <>
             <div className='bg-[#f6f6f6] flex flex-col w-full h-[120vh]'>
