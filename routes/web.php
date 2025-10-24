@@ -1,9 +1,9 @@
 <?php
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\AuthenticationController;
-use App\Http\Controllers\Admin\AddUsersController;
-use App\Http\Controllers\Admin\UpdateUsersController;
-use App\Http\Controllers\Admin\DeleteUsersController;
+use App\Http\Controllers\Admin\UserManagement\AddUsersController;
+use App\Http\Controllers\Admin\UserManagement\UpdateUsersController;
+use App\Http\Controllers\Admin\UserManagement\DeleteUsersController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
