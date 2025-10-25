@@ -116,6 +116,7 @@ export default function Authentication({ user, errors: pageErrors }) {
         }
     }, [resendCooldown]);
 
+    // adding something
     return (
         <>
             <div className="bg-[#F6F6F6] flex flex-col justify-center items-center w-full h-screen">
