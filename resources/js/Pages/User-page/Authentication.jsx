@@ -118,6 +118,7 @@ export default function Authentication({ user, errors: pageErrors }) {
 
     // adding something
     // finalizing
+    // just adding something new features
     return (
         <>
             <div className="bg-[#F6F6F6] flex flex-col justify-center items-center w-full h-screen">
