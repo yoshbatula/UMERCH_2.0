@@ -119,6 +119,7 @@ export default function Authentication({ user, errors: pageErrors }) {
     // adding something
     // finalizing
     // just adding something new features
+    // why is it not working?
     return (
         <>
             <div className="bg-[#F6F6F6] flex flex-col justify-center items-center w-full h-screen">
