@@ -13,6 +13,9 @@ export default function Login() {
         rememberMe: false,
     });
 
+    const SliderImage = [
+    ]
+
     const handleSubmit = (e) => {
         e.preventDefault();
         
@@ -170,11 +173,24 @@ export default function Login() {
                     </div>
                 </div>
 
-                {/* Discounted products - Slider */}
-                <div className='flex flex-col justify-center items-center mt-5'>
+                {/* Discounted products - Single product display (responsive) */}
+                <div className="flex flex-col sm:flex-row justify-center items-center mt-5 gap-6 px-4">
                     {/* Product image */}
-                    <div className='w-120'>
-                        <img src={UmerchDiscountedProduct} alt="" />
+                    <div className="w-40 sm:w-72 lg:w-96">
+                        <img
+                            src={UmerchDiscountedProduct}
+                            alt="Discounted Product"
+                            className="w-full h-100 sm:h-56 lg:h-64 object-cover rounded-lg shadow-md"
+                        />
+                    </div>
+
+                    {/* Product info */}
+                    <div className="text-center sm:text-left">
+                        <h2 className="text-2xl font-semibold text-gray-900">Mheil</h2>
+                        <p className="mt-2 text-gray-600">Special discount — limited time offer!</p>
+                        <div className="mt-4">
+                            <button className="px-4 py-2 bg-[#9C0306] text-white rounded-lg hover:bg-[#7a0204] transition-colors">Shop Now</button>
+                        </div>
                     </div>
                 </div>
             </div>
