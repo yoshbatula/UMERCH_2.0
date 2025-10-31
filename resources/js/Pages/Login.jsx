@@ -186,7 +186,7 @@ export default function Login() {
 
                     {/* Product info */}
                     <div className="text-center sm:text-left">
-                        <h2 className="text-2xl font-semibold text-gray-900">Mheil</h2>
+                        <h2 className="text-2xl font-semibold text-gray-900">Discounted</h2>
                         <p className="mt-2 text-gray-600">Special discount — limited time offer!</p>
                         <div className="mt-4">
                             <button className="px-4 py-2 bg-[#9C0306] text-white rounded-lg hover:bg-[#7a0204] transition-colors">Shop Now</button>
