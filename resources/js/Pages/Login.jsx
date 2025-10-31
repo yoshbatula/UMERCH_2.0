@@ -5,6 +5,7 @@ import { useForm } from '@inertiajs/react';
 import { useState, useEffect } from 'react';
 import UmerchLogo from '../../images/Umerch-Logo.png'
 import UmerchDiscountedProduct from '../../images/um2.jpg'
+import FeaturedCards from '../Components/Cards/FeaturedCards';
 export default function Login() {
     const { data, setData, post, processing, errors } = useForm({
         email: '',
@@ -14,6 +15,11 @@ export default function Login() {
     });
 
     const SliderImage = [
+
+    ]
+
+    const SliderAdvertiseLogo = [
+
     ]
 
     const handleSubmit = (e) => {
@@ -59,7 +65,7 @@ export default function Login() {
                     </div>
 
                     {/* LOGIN FORM */}
-                    <div className='absolute inset-0 bg-black opacity-75 rounded-[15px] mt-25 ml-260 w-110 h-130'>
+                    <div className='absolute inset-0 bg-black opacity-75 rounded-[15px] mt-25 ml-250 w-110 h-130'>
                         <form onSubmit={handleSubmit}>
                             <div className='flex flex-col justify-items-end text-center'>
                             <img src={loginlogo} alt="" className='w-50 ml-31'/>
@@ -143,7 +149,7 @@ export default function Login() {
                 </div>
 
                 {/* ADVERTISE LOGOS */}
-                <div className='py-9 flex flex-row justify-center space-x-10'>
+                <div className='py-3 flex flex-row justify-center space-x-10'>
                     <div>
                         <img src={UmerchLogo} alt="" />
                     </div>
@@ -177,10 +183,10 @@ export default function Login() {
                 <div className="flex flex-col sm:flex-row justify-center items-center mt-5 gap-6 px-4">
                     {/* Product image */}
                     <div className="w-40 sm:w-72 lg:w-96">
-                        <img
-                            src={UmerchDiscountedProduct}
-                            alt="Discounted Product"
-                            className="w-full h-100 sm:h-56 lg:h-64 object-cover rounded-lg shadow-md"
+                        <img 
+                        src={UmerchDiscountedProduct}
+                        alt="" 
+                        className='rounded-[15px]'
                         />
                     </div>
 
@@ -192,6 +198,19 @@ export default function Login() {
                             <button className="px-4 py-2 bg-[#9C0306] text-white rounded-lg hover:bg-[#7a0204] transition-colors">Shop Now</button>
                         </div>
                     </div>
+                </div>
+                
+                {/* Featured Products */}
+                <div className="bg-[#F6F6F6] mt-10 flex flex-col text-center">
+                    <div className="text-black font-bold text-[36px] py-10 h-10">
+                        <header>
+                            <h1>Featured Products</h1>
+                        </header>
+                        <hr className="w-24 border-t-2 border-[#FFB600] mx-auto my-4" />
+                    </div>
+
+                    {/* Featured Cards */}
+                    <FeaturedCards></FeaturedCards>
                 </div>
             </div>
         </>
