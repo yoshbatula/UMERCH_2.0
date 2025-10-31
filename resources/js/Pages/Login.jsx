@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import UmerchLogo from '../../images/Umerch-Logo.png'
 import UmerchDiscountedProduct from '../../images/um2.jpg'
 import FeaturedCards from '../Components/Cards/FeaturedCards';
+import LimitedOffer from '../../images/LimitedOffer.png'
 export default function Login() {
     const { data, setData, post, processing, errors } = useForm({
         email: '',
@@ -215,12 +216,18 @@ export default function Login() {
                         <FeaturedCards />
                         <FeaturedCards />
                     </div>
+
+                    <div className='mt-10 relative'>
+                        <div>
+                            <img 
+                            src={LimitedOffer} 
+                            alt="Limited Offer"
+                            className='w-[100%]'
+                            />
+                        </div>
+                    </div>
                 </div>
                 
-                {/* Limited Offer */}
-                <div>
-
-                </div>
             </div>
         </>
     );
