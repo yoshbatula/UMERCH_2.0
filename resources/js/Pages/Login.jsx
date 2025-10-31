@@ -227,7 +227,7 @@ export default function Login() {
                         </div>
                     </div>
                 </div>
-                {/* grr */}
+                {/* grr just adding the features of limited offers*/}
             </div>
         </>
     );
