@@ -179,7 +179,7 @@ export default function Login() {
                     </div>
                 </div>
 
-                {/* Discounted products - Single product display (responsive) */}
+                {/* Discounted products */}
                 <div className="flex flex-col sm:flex-row justify-center items-center mt-5 gap-6 px-4">
                     {/* Product image */}
                     <div className="w-40 sm:w-72 lg:w-96">
@@ -201,16 +201,25 @@ export default function Login() {
                 </div>
                 
                 {/* Featured Products */}
-                <div className="bg-[#F6F6F6] mt-10 flex flex-col text-center">
-                    <div className="text-black font-bold text-[36px] py-10 h-10">
-                        <header>
-                            <h1>Featured Products</h1>
-                        </header>
-                        <hr className="w-24 border-t-2 border-[#FFB600] mx-auto my-4" />
+                <div className='bg-[#F6F6F6] mt-8 flex flex-col items-center py-5'>
+                    <div className='text-black font-bold text-[36px]'>
+                        <h1>Featured Products</h1>
                     </div>
+                    <div className="mx-auto w-52 h-1 bg-[#FFB600] mt-2" />
+                    
+                    <div className='mt-4 flex flex-row flex-wrap justify-center gap-6'>
+                        <FeaturedCards />
+                        <FeaturedCards />
+                        <FeaturedCards />
+                        <FeaturedCards />
+                        <FeaturedCards />
+                        <FeaturedCards />
+                    </div>
+                </div>
+                
+                {/* Limited Offer */}
+                <div>
 
-                    {/* Featured Cards */}
-                    <FeaturedCards></FeaturedCards>
                 </div>
             </div>
         </>
