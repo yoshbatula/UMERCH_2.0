@@ -217,13 +217,21 @@ export default function Login() {
                         <FeaturedCards />
                     </div>
 
-                    <div className='mt-10 relative'>
+                    <div className='mt-10 flex justify-center'>
+                        {/* Limited Offer Background */}
                         <div>
                             <img 
                             src={LimitedOffer} 
                             alt="Limited Offer"
-                            className='w-[100%]'
+                            className='w-[150%] max-w-6xl'
                             />
+                        </div>
+                        {/* Limited Offer Text */}
+                
+                        <div className='relative'>
+                            <div className='absolute inset-0 flex items-center justify-center'>
+                                <h2 className='text-white text-3xl font-bold'>Limited Time Offer!</h2>
+                            </div>
                         </div>
                     </div>
                 </div>
