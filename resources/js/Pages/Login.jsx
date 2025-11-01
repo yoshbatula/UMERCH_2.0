@@ -241,6 +241,7 @@ export default function Login() {
                     </div>
                 </div>
                 {/* grr just adding the features of limited offers*/}
+                {/* I do't know why that the text is in the right side huhu */}
             </div>
         </>
     );
