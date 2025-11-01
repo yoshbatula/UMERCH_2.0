@@ -229,8 +229,13 @@ export default function Login() {
                         {/* Limited Offer Text */}
                 
                         <div className='relative'>
-                            <div className='absolute inset-0 flex items-center justify-center'>
-                                <h2 className='text-white text-3xl font-bold'>Limited Time Offer!</h2>
+                            <div className='absolute inset-0 flex flex-col justify-center'>
+                                <div>
+                                    <h1 className='text-white text-4xl font-bold'>LIMITED OFFER!</h1>
+                                </div>
+                                <div>
+                                    <p className='text-white text-lg mt-2'>Hurry up and grab the best deals before they're gone!</p>
+                                </div>
                             </div>
                         </div>
                     </div>
