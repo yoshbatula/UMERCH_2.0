@@ -216,32 +216,36 @@ export default function Login() {
                         <FeaturedCards />
                         <FeaturedCards />
                     </div>
-
-                    <div className='mt-10 flex justify-center'>
-                        {/* Limited Offer Background */}
-                        <div>
-                            <img 
-                            src={LimitedOffer} 
+                    
+                    {/* Limited Offer Section */}
+                    <div className='mt-11 relative flex justify-center'>
+                        {/* Background Image */}
+                        <img 
+                            src={LimitedOffer}
                             alt="Limited Offer"
-                            className='w-[150%] max-w-6xl'
-                            />
-                        </div>
-                        {/* Limited Offer Text */}
-                
-                        <div className='relative'>
-                            <div className='absolute inset-0 flex flex-col justify-center'>
-                                <div>
-                                    <h1 className='text-white text-4xl font-bold'>LIMITED OFFER!</h1>
-                                </div>
-                                <div>
-                                    <p className='text-white text-lg mt-2'>Hurry up and grab the best deals before they're gone!</p>
-                                </div>
+                            className='w-full max-w-[75rem] object-cover'  
+                        />
+                        
+                        {/* Text Overlay - positioned at start/left */}
+                        <div className='absolute inset-0 flex flex-col items-start justify-center px-8 md:px-15 text-white'>
+                            <div className='text-[20px]'>
+                                <h1>Limited Time Offer</h1>
+                            </div>
+                            <div className='mt-4 font-semibold text-[40px]'>
+                                <h1>Special Edition</h1>
+                            </div>
+                            <div className='mt-5 text-[16px]'>
+                                <p>Lorem ipsum dolor sit amet </p>
+                                <p>consectetur. Purus aenean</p>
+                                <p>bibendum ipsum ligula sit velit nibh.</p>
+                            </div>
+                            <div>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
-                {/* grr just adding the features of limited offers*/}
-                {/* I do't know why that the text is in the right side huhu */}
+                
             </div>
         </>
     );
