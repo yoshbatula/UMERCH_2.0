@@ -239,8 +239,9 @@ export default function Login() {
                                 <p>consectetur. Purus aenean</p>
                                 <p>bibendum ipsum ligula sit velit nibh.</p>
                             </div>
-                            <div>
-                                
+                            <div className='mt-8 text-[20px]'>
+                                <p>Buy T-shirt at 20% Discount,</p>
+                                <p>Use Code OFF20</p>
                             </div>
                         </div>
                     </div>
