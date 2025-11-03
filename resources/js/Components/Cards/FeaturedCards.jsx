@@ -24,7 +24,6 @@ export default function FeaturedCards() {
                 <div className="mt-2 flex items-center justify-between">
                     <div className="flex items-center gap-2">
                         <span className="text-[#9C0306] font-bold text-xl">₱499.00</span>
-                        <span className="text-[#969696] text-lg font-bold line-through">₱600.00</span>
                     </div>
                     <span className="text-gray-600 text-sm font-medium">125 stocks</span>
                 </div>

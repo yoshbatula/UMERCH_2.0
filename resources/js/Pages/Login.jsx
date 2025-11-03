@@ -7,6 +7,7 @@ import UmerchLogo from '../../images/Umerch-Logo.png'
 import UmerchDiscountedProduct from '../../images/um2.jpg'
 import FeaturedCards from '../Components/Cards/FeaturedCards';
 import LimitedOffer from '../../images/LimitedOffer.png'
+import UmAccessories from '../Components/Cards/UmAccessories';
 export default function Login() {
     const { data, setData, post, processing, errors } = useForm({
         email: '',
@@ -243,6 +244,21 @@ export default function Login() {
                                 <p>Buy T-shirt at 20% Discount,</p>
                                 <p>Use Code OFF20</p>
                             </div>
+                            <div className='mt-5 bg-[#FFB600] text-[#BE0002] text-center justify-center w-32 h-10 border border-white flex items-center hover:cursor-pointer'>
+                                <button>SHOP NOW</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* UM ACCESSORIES */}
+                    <div className='mt-10 flex flex-col items-center justify-center'>
+                        <div className='text-center'>
+                            <h1 className='text-[42px] font-bold'>UM Accessories</h1>
+                            <div className="mx-auto w-64 h-1 bg-[#FFB600] mt-2" />
+                        </div>
+
+                        <div className='mt-6'>
+                            <UmAccessories />
                         </div>
                     </div>
                 </div>
