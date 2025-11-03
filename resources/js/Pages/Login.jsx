@@ -67,7 +67,7 @@ export default function Login() {
                     </div>
 
                     {/* LOGIN FORM */}
-                    <div className='absolute inset-0 bg-black opacity-75 rounded-[15px] mt-25 ml-250 w-110 h-130'>
+                    <div className='absolute inset-0 bg-black opacity-75 rounded-[15px] mt-22 ml-250 w-110 h-130'>
                         <form onSubmit={handleSubmit}>
                             <div className='flex flex-col justify-items-end text-center'>
                             <img src={loginlogo} alt="" className='w-50 ml-31'/>
@@ -217,9 +217,15 @@ export default function Login() {
                         <FeaturedCards />
                         <FeaturedCards />
                     </div>
+
+                    <div className='mt-10 flex justify-center'>
+                        <button className='bg-[#9C0306] text-white px-8 py-3 rounded-[20px] hover:bg-[#7a0204] transition-colors font-medium'>
+                            SEE MORE PRODUCT
+                        </button>
+                    </div>
                     
                     {/* Limited Offer Section */}
-                    <div className='mt-11 relative flex justify-center'>
+                    <div className='mt-16 relative flex justify-center'>
                         {/* Background Image */}
                         <img 
                             src={LimitedOffer}
@@ -257,10 +263,25 @@ export default function Login() {
                             <div className="mx-auto w-64 h-1 bg-[#FFB600] mt-2" />
                         </div>
 
-                        <div className='mt-6'>
+                        <div className='mt-16 flex flex-row gap-8'>
                             <UmAccessories />
+                            <UmAccessories />
+                            <UmAccessories />
+                            <UmAccessories />
+                            <UmAccessories/>
+                        </div>
+
+                        <div className='mt-10 flex justify-center'>
+                            <button className='bg-[#9C0306] text-white px-8 py-3 rounded-[20px] hover:bg-[#7a0204] transition-colors font-medium'>
+                                SEE MORE ACCESSORIES
+                            </button>
                         </div>
                     </div>
+                </div>
+                
+                {/* Features */}
+                <div className=''>
+
                 </div>
                 
             </div>
