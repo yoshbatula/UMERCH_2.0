@@ -8,6 +8,7 @@ import UmerchDiscountedProduct from '../../images/um2.jpg'
 import FeaturedCards from '../Components/Cards/FeaturedCards';
 import LimitedOffer from '../../images/LimitedOffer.png'
 import UmAccessories from '../Components/Cards/UmAccessories';
+import Features from '../Components/Features';
 export default function Login() {
     const { data, setData, post, processing, errors } = useForm({
         email: '',
@@ -280,10 +281,7 @@ export default function Login() {
                 </div>
                 
                 {/* Features */}
-                <div className=''>
-
-                </div>
-                
+                <Features/>
             </div>
         </>
     );
