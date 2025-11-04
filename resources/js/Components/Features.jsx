@@ -11,7 +11,7 @@ export default function Features() {
                 <img 
                     src={CampusDelivery} 
                     alt="Campus Delivery" 
-                    className='w-20 h-20 object-contain'
+                    className='w-20 h-15 object-contain'
                     />
                     <h1 className='mt-5 text-[20px] font-semibold'>Campus Delivery</h1>
             </div>
@@ -19,7 +19,7 @@ export default function Features() {
                 <img 
                 src={GoodQuality} 
                 alt="Good Quality" 
-                className='w-20 h-20 object-contain'
+                className='w-20 h-15 object-contain'
                 />
                 <h1 className='mt-5 text-[20px] font-semibold'>Good Quality</h1>
             </div>
@@ -27,7 +27,7 @@ export default function Features() {
                 <img 
                 src={BestOffer} 
                 alt="Best Offer" 
-                className='w-20 h-20 object-contain'
+                className='w-20 h-15 object-contain'
                 />
                 <h1 className='mt-5 text-[20px] font-semibold'>Best Offer</h1>
             </div>
@@ -35,7 +35,7 @@ export default function Features() {
                 <img 
                 src={SecurePayment} 
                 alt="Secure Payment" 
-                className='w-20 h-20 object-contain'
+                className='w-20 h-15 object-contain'
                 />
                 <h1 className='mt-5 text-[20px] font-semibold'>Secure Payment</h1>
             </div>

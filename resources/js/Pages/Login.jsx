@@ -9,6 +9,8 @@ import FeaturedCards from '../Components/Cards/FeaturedCards';
 import LimitedOffer from '../../images/LimitedOffer.png'
 import UmAccessories from '../Components/Cards/UmAccessories';
 import Features from '../Components/Features';
+import Knowledge from '../Components/Knowledge';
+import Footer from '@/Layouts/Footer';
 export default function Login() {
     const { data, setData, post, processing, errors } = useForm({
         email: '',
@@ -282,13 +284,16 @@ export default function Login() {
                 
                 {/* Features */}
                 <Features/>
+                {/* Knowledge */}
+                <Knowledge/>
             </div>
         </>
     );
 }
 
 // navigation layout
-
 Login.layout = page => <Layout children={page} />
+// footer layout
+Footer.layout = page => <Layout children={page} />
 
 

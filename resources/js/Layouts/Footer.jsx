@@ -1,8 +1,13 @@
 
-export default function Footer() {
+export default function Footer({children}) {
     return(
-        <div>
-            
-        </div>
+        <>
+            <div>
+                <h1>adasdsdasda</h1>
+            </div>
+            <main>
+                {children}
+            </main>
+        </>
     );
 }
