@@ -286,6 +286,8 @@ export default function Login() {
                 <Features/>
                 {/* Knowledge */}
                 <Knowledge/>
+                {/* Footer */}
+                <Footer />
             </div>
         </>
     );
@@ -293,7 +295,5 @@ export default function Login() {
 
 // navigation layout
 Login.layout = page => <Layout children={page} />
-// footer layout
-Footer.layout = page => <Layout children={page} />
 
 
