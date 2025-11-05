@@ -42,14 +42,14 @@ export default function Login() {
 
     return (
         <>
-            <div className='bg-[#f6f6f6] flex flex-col w-full h-[90vh]'>
+            <div className='bg-[#f6f6f6] flex flex-col w-full'>
                 {/* BACKGROUND IMAGE */}
-                <div className='relative'>
+                <div className='relative z-0'>
                     <img src={umbg} alt="UM-LOGO" className='w-full h-full object-cover'/>
                     <div className='absolute inset-0 bg-black opacity-50'></div>
                 </div>
                 {/* BACKGROUND CONTENT */}
-                <div className='absolute flex items-center pl-16'>
+                <div className='absolute flex items-center pl-16 z-10'>
                     <div className='flex flex-col mt-45'>
                         <div>
                             <h1 className='text-white text-1xl'>CASUAL & EVERYDAY</h1>
