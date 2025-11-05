@@ -3,6 +3,7 @@ import React from 'react';
 import BackgroundModel from '../../../images/BackgroundModel.png';
 import ShopCards from '../../Components/Cards/FeaturedCards';
 export default function Shop() {
+
     return (
         // Backgrounds Model
         <div className='bg-[#F6F6F6] flex flex-col justify-center'>
@@ -47,11 +48,11 @@ export default function Shop() {
 
             {/* Pagination */}
             <div className='flex flex-row justify-center items-center gap-4 pb-10'>
-                <button className='px-3 py-1 border border-gray-400 rounded hover:bg-gray-200'></button>
+                <button className='px-3 py-1 border border-gray-400 rounded hover:bg-gray-200'>{}</button>
                 <button className='px-3 py-1 border border-gray-400 rounded bg-[#9C0306] text-white'>1</button>
                 <button className='px-3 py-1 border border-gray-400 rounded hover:bg-gray-200'>2</button>
                 <button className='px-3 py-1 border border-gray-400 rounded hover:bg-gray-200'>3</button>
-                <button className='px-3 py-1 border border-gray-400 rounded hover:bg-gray-200'>Next</button>
+                <button className='px-3 py-1 border border-gray-400 rounded hover:bg-gray-200'>{}</button>
             </div>
         </div>
 

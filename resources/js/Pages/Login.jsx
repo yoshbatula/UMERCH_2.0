@@ -42,7 +42,7 @@ export default function Login() {
 
     return (
         <>
-            <div className='bg-[#f6f6f6] flex flex-col w-full'>
+            <div className='flex flex-col w-full'>
                 {/* BACKGROUND IMAGE */}
                 <div className='relative z-0'>
                     <img src={umbg} alt="UM-LOGO" className='w-full h-full object-cover'/>
