@@ -42,7 +42,7 @@ export default function Login() {
 
     return (
         <>
-            <div className='bg-[#f6f6f6] flex flex-col w-full h-[110vh]'>
+            <div className='bg-[#f6f6f6] flex flex-col w-full h-[90vh]'>
                 {/* BACKGROUND IMAGE */}
                 <div className='relative'>
                     <img src={umbg} alt="UM-LOGO" className='w-full h-full object-cover'/>
@@ -64,13 +64,13 @@ export default function Login() {
                         </div>
                         <div className='mt-5 bg-[#9C0306] text-center justify-center w-45 h-10 border border-black'>
                             <form action="/landing" method="get">
-                                <input type="submit" className='text-white item-center mt-2 hover:cursor' value="VIEW COLLECTION" />
+                                <input type="submit" className='text-white item-center mt-2 hover:cursor' value="VIEW PRODUCTS" />
                             </form>
                         </div>
                     </div>
 
                     {/* LOGIN FORM */}
-                    <div className='absolute inset-0 bg-black opacity-75 rounded-[15px] mt-22 ml-250 w-110 h-130'>
+                    <div className='absolute inset-0 bg-black opacity-75 rounded-[15px] mt-19 ml-250 w-110 h-130'>
                         <form onSubmit={handleSubmit}>
                             <div className='flex flex-col justify-items-end text-center'>
                             <img src={loginlogo} alt="" className='w-50 ml-31'/>
@@ -154,7 +154,7 @@ export default function Login() {
                 </div>
 
                 {/* ADVERTISE LOGOS */}
-                <div className='py-3 flex flex-row justify-center space-x-10'>
+                <div className='mt-4 py-3 flex flex-row justify-center space-x-10'>
                     <div>
                         <img src={UmerchLogo} alt="" />
                     </div>
@@ -185,7 +185,7 @@ export default function Login() {
                 </div>
 
                 {/* Discounted products */}
-                <div className="flex flex-col sm:flex-row justify-center items-center mt-5 gap-6 px-4">
+                <div className="flex flex-col sm:flex-row justify-center items-center mt-10 gap-6 px-4">
                     {/* Product image */}
                     <div className="w-40 sm:w-72 lg:w-96">
                         <img 
@@ -207,12 +207,12 @@ export default function Login() {
                 
                 {/* Featured Products */}
                 <div className='bg-[#F6F6F6] mt-8 flex flex-col items-center py-5'>
-                    <div className='text-black font-bold text-[36px]'>
+                    <div className='mt-6 text-black font-bold text-[36px]'>
                         <h1>Featured Products</h1>
                     </div>
                     <div className="mx-auto w-52 h-1 bg-[#FFB600] mt-2" />
                     
-                    <div className='mt-4 flex flex-row flex-wrap justify-center gap-6'>
+                    <div className='mt-10 flex flex-row flex-wrap justify-center gap-6'>
                         <FeaturedCards />
                         <FeaturedCards />
                         <FeaturedCards />

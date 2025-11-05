@@ -5,7 +5,7 @@ import ShopCards from '../../Components/Cards/FeaturedCards';
 export default function Shop() {
     return (
         // Backgrounds Model
-        <div className='bg-[#F6F6F6] flex flex-col text-center justify-center'>
+        <div className='bg-[#F6F6F6] flex flex-col justify-center'>
             <div className='w-full h-48 sm:h-56 md:h-64 lg:h-72 overflow-hidden'>
                 <img 
                 src={BackgroundModel}

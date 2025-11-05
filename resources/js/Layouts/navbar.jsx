@@ -4,7 +4,7 @@ import UmerchLogo from '../../images/Umerch-Logo.png'
 export default function navbar({children}) {
     return (
         <>
-            <header className='p-4 bg-[#9C0306] flex flex-row justify-start items-center gap-6 h-20'>
+            <header className='navbar p-4 bg-[#9C0306] flex flex-row justify-start items-center gap-6 h-20'>
                 {/* Logo */}
                 <div>
                     <img src={UmerchLogo} alt="Umerch Logo" className='h-14 ml-2'/>
