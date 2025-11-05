@@ -11,6 +11,9 @@ use Inertia\Inertia;
 Route::get('/', function() {
     return Inertia::render('Login');
 });
+Route::get('/Shop', function() {
+    return Inertia::render('User-page/Shop');
+});
 
 Route::get('/admin', [AddUsersController::class, 'index'])->name('admin.users.index');
 
