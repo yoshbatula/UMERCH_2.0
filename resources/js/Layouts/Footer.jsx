@@ -67,6 +67,9 @@ export default function Footer({children}) {
                     </div>
                 </div>
             </div>
+            <div className="bg-white text-center py-6 text-[16px] text-[#727272]">
+               Copyright &copy; 2025 UMerch | Powered by Univebersity of Mindanao
+            </div>
             <main>
                 {children}
             </main>

@@ -30,7 +30,7 @@ Route::post('/resend-otp', [AuthenticationController::class, 'resendOtp'])->name
 
 // Dashboard
 Route::get('/landing', function() {
-    return Inertia::render('User-page/Landingpage', [
+    return Inertia::render('User-page/Login/Landingpage', [
         'auth' => [
             'user' => Auth::user()
         ]
