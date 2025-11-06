@@ -17,6 +17,11 @@ Route::get('/Shop', function() {
 
 Route::get('/admin', [AddUsersController::class, 'index'])->name('admin.users.index');
 
+// Admin Navigation
+Route::get('AddProduct', function() {
+    return Inertia::render('Admin-page/Inventory/AddProduct');
+});
+
 // Login Routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');

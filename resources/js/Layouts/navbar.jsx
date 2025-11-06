@@ -12,15 +12,15 @@ export default function navbar({children}) {
                 
                 {/* Navigation Links */}
                 <nav className='text-white mt-2 text-[14px]'>
-                    <Link href="/" className="mx-2 text-white">HOME</Link>
-                    <Link href="/Shop" className="mx-2 text-white">SHOP</Link>
-                    <Link href="/About" className="mx-2 text-white">ABOUT US</Link>
-                    <Link href="/contact" className="mx-2 text-white">CONTACT</Link>
+                    <Link href="/" className="mx-2 text-white font-bold">HOME</Link>
+                    <Link href="/Shop" className="mx-2 text-white font-bold">SHOP</Link>
+                    <Link href="/About" className="mx-2 text-white font-bold">ABOUT US</Link>
+                    <Link href="/contact" className="mx-2 text-white font-bold">CONTACT</Link>
                 </nav>
 
                 {/* Sign-In */}
                 <div className='ml-auto'>
-                    <Link href="/login" className="mx-2 text-white text-[14px]">SIGN IN</Link>
+                    <Link href="/login" className="mx-2 text-white text-[14px] font-bold">SIGN IN</Link>
                 </div>
 
                 {/* Account Logo */}

@@ -1,4 +1,5 @@
 import {Link} from "@inertiajs/react";
+import { useState } from "react";
 import Logo from "@images/Umerch-Logo.png";
 import AccountLogo from "@images/Account.svg";
 import DashboardLogo from "@images/AdminDashboard.svg";
@@ -7,6 +8,8 @@ import RecordLogsLogo from "@images/RecordLogs.svg"
 import LogoutLogo from "@images/LogoutLogo.svg"
 
 export default function AdminNav({children}) {
+    const [isInventoryOpen, setIsInventoryOpen] = useState(false);
+
     return (
         <div className="flex min-h-screen bg-gray-100">
             {/* Sidebar */}
@@ -28,9 +31,29 @@ export default function AdminNav({children}) {
                         <img src={DashboardLogo} alt="Dashboard" className="w-6 h-6 mr-3"/>
                         <Link href="#" className="text-sm">Dashboard</Link>
                     </div>
-                    <div className="flex items-center text-white hover:bg-red-700 p-3 rounded-lg cursor-pointer">
-                        <img src={InventoryLogo} alt="Inventory" className="w-6 h-6 mr-3"/>
-                        <Link href="#" className="text-sm">Inventory</Link>
+                    <div>
+                        <div 
+                            className="flex items-center text-white hover:bg-red-700 p-3 rounded-lg cursor-pointer"
+                            onClick={() => setIsInventoryOpen(!isInventoryOpen)}
+                        >
+                            <img src={InventoryLogo} alt="Inventory" className="w-6 h-6 mr-3"/>
+                            <span className="text-sm">Inventory</span>
+                            <svg 
+                                className={`w-4 h-4 ml-auto transition-transform ${isInventoryOpen ? 'rotate-180' : ''}`}
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </div>
+                        {isInventoryOpen && (
+                            <div className="pl-12 space-y-1 mt-1">
+                                <Link href="/AddProduct" className="block text-white text-sm py-2 px-3 hover:bg-red-700 rounded">Add Product</Link>
+                                <Link href="#" className="block text-white text-sm py-2 px-3 hover:bg-red-700 rounded">Stock In</Link>
+                                <Link href="#" className="block text-white text-sm py-2 px-3 hover:bg-red-700 rounded">Stock Out</Link>
+                            </div>
+                        )}
                     </div>
                     <div className="flex items-center text-white hover:bg-red-700 p-3 rounded-lg cursor-pointer">
                         <img src={RecordLogsLogo} alt="Record Logs" className="w-6 h-6 mr-3"/>
