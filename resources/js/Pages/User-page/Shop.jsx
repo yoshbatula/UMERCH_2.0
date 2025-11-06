@@ -2,6 +2,9 @@ import Layout from '@/Layouts/navbar';
 import React from 'react';
 import BackgroundModel from '../../../images/BackgroundModel.png';
 import ShopCards from '../../Components/Cards/FeaturedCards';
+import Footer from '../../Layouts/Footer';
+import LeftArrow from '../../../images/LeftArrow.svg';
+import RightArrow from '../../../images/RightArrow.svg';
 export default function Shop() {
 
     return (
@@ -48,13 +51,17 @@ export default function Shop() {
 
             {/* Pagination */}
             <div className='flex flex-row justify-center items-center gap-4 pb-10'>
-                <button className='px-3 py-1 border border-gray-400 rounded hover:bg-gray-200'>{}</button>
+                <button className='px-3 py-1 hover:bg-gray-200'><img src={LeftArrow} alt="Left Arrow"/></button>
                 <button className='px-3 py-1 border border-gray-400 rounded bg-[#9C0306] text-white'>1</button>
-                <button className='px-3 py-1 border border-gray-400 rounded hover:bg-gray-200'>2</button>
-                <button className='px-3 py-1 border border-gray-400 rounded hover:bg-gray-200'>3</button>
-                <button className='px-3 py-1 border border-gray-400 rounded hover:bg-gray-200'>{}</button>
+                <button className='px-3 py-1 border border-[#9C0306] text-[#9C0306]'>2</button>
+                <button className='px-3 py-1 border border-[#9C0306] text-[#9C0306]'>3</button>
+                <button className='px-3 py-1 hover:bg-gray-200'><img src={RightArrow} alt="Left Arrow"/></button>
             </div>
+
+            {/* Footer */}
+            <Footer />
         </div>
+
 
     );
 }
