@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from "@/Layouts/AdminNav";
+import Box from '../../../..//images/BOX.svg'
 export default function AddProduct() {
     return (
         <div className='py-9 px-19 flex flex-col'>
@@ -10,9 +11,16 @@ export default function AddProduct() {
                 </div>
             </div>
 
-            {/*  */}
-            <div>
+            {/* Cards */}
+            <div className='flex flex-row items-start justify-start gap-6 text-white'>
+                <div className='bg-[#FFB600] rounded-2xl w-[230px] h-[110px]'>
+                    <div className='flex flex-col'>
+                        <h1>Total Products</h1>
+                    </div>
+                </div>
+                <div className='bg-[#9C0306] rounded-2xl w-[230px] h-[110px]'>
 
+                </div>
             </div>
         </div>
        
