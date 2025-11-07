@@ -69,6 +69,10 @@ export default function AddProduct() {
                     </div>
                 </div>
             </div>
+            {/* Product Table */}
+            <div className='table-container mt-3'>
+                
+            </div>
         </div>
     );
 }
