@@ -71,7 +71,25 @@ export default function AddProduct() {
             </div>
             {/* Product Table */}
             <div className='table-container mt-3'>
-                
+                <table className='min-w-full bg-white border border-gray-200 rounded-lg shadow-md'>
+                    <thead>
+                        <tr className='text-center'>
+                            <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">Product</th>
+                            <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">Cost</th>
+                            <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">Action</th>
+                        </tr>
+                        <hr />
+                    <tbody>
+                        <tr>
+                            <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-700">Product 1</td>
+                            <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-700">$10.00</td>
+                            <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-700">
+                                <button className="text-[#9C0306] hover:underline">Edit</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    </thead>    
+                </table>
             </div>
         </div>
     );
