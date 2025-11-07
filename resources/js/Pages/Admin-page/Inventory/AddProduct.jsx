@@ -70,25 +70,24 @@ export default function AddProduct() {
                 </div>
             </div>
             {/* Product Table */}
-            <div className='table-container mt-3'>
-                <table className='min-w-full bg-white border border-gray-200 rounded-lg shadow-md'>
-                    <thead>
-                        <tr className='text-center'>
-                            <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">Product</th>
-                            <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">Cost</th>
-                            <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">Action</th>
-                        </tr>
-                        <hr />
-                    <tbody>
+            <div className='table-container mt-3 overflow-hidden rounded-2xl border border-gray-200 shadow-md'>
+                <table className='min-w-full bg-white'>
+                    <thead className='bg-gray-50'>
                         <tr>
-                            <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-700">Product 1</td>
-                            <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-700">$10.00</td>
-                            <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-700">
-                                <button className="text-[#9C0306] hover:underline">Edit</button>
+                            <th className="py-3 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700 w-1/2">Product</th>
+                            <th className="py-3 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700 w-1/4">Cost</th>
+                            <th className="py-3 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700 w-1/4">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className='hover:bg-gray-50'>
+                            <td className="py-3 px-4 border-b border-gray-200 text-sm text-gray-700">Product 1</td>
+                            <td className="py-3 px-4 border-b border-gray-200 text-sm text-gray-700">$10.00</td>
+                            <td className="py-3 px-4 border-b border-gray-200 text-sm text-gray-700">
+                                <button className="text-[#9C0306] hover:underline font-medium">Edit</button>
                             </td>
                         </tr>
                     </tbody>
-                    </thead>    
                 </table>
             </div>
         </div>

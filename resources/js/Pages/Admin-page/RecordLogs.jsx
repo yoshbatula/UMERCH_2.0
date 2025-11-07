@@ -125,10 +125,10 @@ export default function RecordLogs({ users = [], recordlogs = [] }) {
                     </div>
                     
                     {/* TABLE LOGS */}
-                    <div className="table-container mt-3">
-                        <table className="min-w-full bg-white border border-gray-200">
-                            <thead>
-                                <tr className="text-center">
+                    <div className="table-container mt-3 overflow-hidden rounded-2xl border border-gray-200 shadow-md">
+                        <table className="min-w-full bg-white">
+                            <thead className="bg-gray-50">
+                                <tr>
                                     <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">ID</th>
                                     <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">Name</th>
                                     <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">UserID</th>
@@ -202,9 +202,9 @@ export default function RecordLogs({ users = [], recordlogs = [] }) {
                         </div>
                     </div>
                     
-                    <div className="table-container mt-3">
-                        <table className="min-w-full bg-white border border-gray-200">
-                            <thead>
+                    <div className="table-container mt-3 overflow-hidden rounded-2xl border border-gray-200 shadow-md">
+                        <table className="min-w-full bg-white">
+                            <thead className="bg-gray-50">
                                 <tr>
                                     <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">Name</th>
                                     <th className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700">Email</th>
