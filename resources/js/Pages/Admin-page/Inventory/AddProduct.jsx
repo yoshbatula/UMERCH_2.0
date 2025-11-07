@@ -12,14 +12,21 @@ export default function AddProduct() {
             </div>
 
             {/* Cards */}
-            <div className='flex flex-row items-start justify-start gap-6 text-white'>
-                <div className='bg-[#FFB600] rounded-2xl w-[230px] h-[110px]'>
-                    <div className='flex flex-col'>
-                        <h1>Total Products</h1>
+            <div className="flex flex-row gap-6">
+                <div className="bg-[#FFB600] flex items-center justify-between rounded-2xl w-80 h-32 p-6 shadow-lg hover:shadow-xl transition-shadow">
+                    <div className="flex flex-col">
+                        <h2 className="text-white text-[15px] font-semibold">Total Products</h2>
+                        <p className="text-red-100 text-[20px] font-semibold mt-4">15</p>
+                        <span className='text-white text-[10px] font-light'>Active Inventory Items</span>
+                    </div>
+                    <div>
+                    <img src={Box} alt="Box Icon" />
                     </div>
                 </div>
-                <div className='bg-[#9C0306] rounded-2xl w-[230px] h-[110px]'>
+                <div className='bg-[#9C0306] flex items-center justify-between rounded-2xl w-80 h-32 p-6 shadow-lg hover:shadow-xl transition-shadow'>
+                    <div>
 
+                    </div>
                 </div>
             </div>
         </div>
