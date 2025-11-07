@@ -90,6 +90,16 @@ export default function AddProduct() {
                     </tbody>
                 </table>
             </div>
+            {/* Pagination */}
+            <div className='mt-6 flex flex-row items-center justify-center'>
+                <div className='text-[20px] font-bold gap-10 flex flex-row'>
+                        <p>Prev</p>
+                        <p className='text-[#9C0306]'>1</p>
+                        <p>2</p>
+                        <p>3</p>
+                        <p>Next</p>
+                </div>
+            </div>
         </div>
     );
 }

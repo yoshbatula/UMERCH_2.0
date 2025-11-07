@@ -4,6 +4,7 @@ import AddModal from './modals/AddUsers'
 import UpdateModal from './modals/UpdateUsers'
 import { Link } from '@inertiajs/react';
 import DeleteModal from './modals/DeleteModal'
+import AdminFooter from "../../Layouts/AdminFooter";
 import { useState, useEffect } from "react";
 
 export default function RecordLogs({ users = [], recordlogs = [] }) {
@@ -238,6 +239,10 @@ export default function RecordLogs({ users = [], recordlogs = [] }) {
                             </tbody>
                         </table>
                     </div>
+                </div>
+                {/* Footer */}
+                <div className="mt-8">
+                    <AdminFooter />
                 </div>
             </div>
 
