@@ -2,8 +2,10 @@ import React from 'react';
 import Layout from "@/Layouts/AdminNav";
 import Box from '../../../..//images/BOX.svg'
 import Danger from '../../../../images/Danger.svg'
+import AdminFooter from '../../../Layouts/AdminFooter';
 export default function AddProduct() {
     return (
+        <>
         <div className='py-9 px-19 flex flex-col'>
             <div className='text-[32px] mb-4'>
                 <h1 className='font-bold'>Inventory</h1>
@@ -100,7 +102,10 @@ export default function AddProduct() {
                         <p>Next</p>
                 </div>
             </div>
-        </div>
+        </div>  
+        {/* Footer */}
+        <AdminFooter />
+    </>
     );
 }
 

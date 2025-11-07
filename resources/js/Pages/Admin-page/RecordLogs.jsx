@@ -240,10 +240,11 @@ export default function RecordLogs({ users = [], recordlogs = [] }) {
                         </table>
                     </div>
                 </div>
-                {/* Footer */}
-                <div className="mt-8">
-                    <AdminFooter />
-                </div>
+            </div>
+            
+            {/* Footer */}
+            <div className="mt-4 w-full">
+                <AdminFooter />
             </div>
 
             {/* Modals */}
