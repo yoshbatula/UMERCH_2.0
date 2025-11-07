@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from "@/Layouts/AdminNav";
 import Box from '../../../..//images/BOX.svg'
+import Danger from '../../../../images/Danger.svg'
 export default function AddProduct() {
     return (
         <div className='py-9 px-19 flex flex-col'>
@@ -23,9 +24,17 @@ export default function AddProduct() {
                     <img src={Box} alt="Box Icon" />
                     </div>
                 </div>
-                <div className='bg-[#9C0306] flex items-center justify-between rounded-2xl w-80 h-32 p-6 shadow-lg hover:shadow-xl transition-shadow'>
+                <div className="bg-[#9C0306] flex items-center justify-between rounded-2xl w-80 h-32 p-6 shadow-lg hover:shadow-xl transition-shadow">
+                    <div className="flex flex-col">
+                        <h2 className="text-white text-[15px] font-semibold">Low Stock Alert</h2>
+                        <p className="text-red-100 text-[20px] font-semibold mt-4">15</p>
+                        <span className='text-white text-[10px] font-light'>Items need restocking</span>
+                    </div>
                     <div>
-
+                        <img 
+                        src={Danger} 
+                        alt="Danger Icon" 
+                        />
                     </div>
                 </div>
             </div>
