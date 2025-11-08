@@ -105,6 +105,7 @@ export default function AddProduct() {
         </div>  
         {/* Footer */}
         <AdminFooter />
+        {/* Why is the footer not working */}
     </>
     );
 }
