@@ -106,6 +106,7 @@ export default function AddProduct() {
         {/* Footer */}
         <AdminFooter />
         {/* Initial commit */}
+        {/* Another commit */}
     </>
     );
 }
