@@ -52,19 +52,35 @@ export default function AddProductModal({ isOpen, onClose }) {
             </div>
             {/* Modal Body */}
             <div className='p-6'>
-                <div className='flex flex-row gap-10'>
-                    <div className='p-10 flex flex-col w-70 border-2 border-[#9C0306] rounded-lg bg-white'>
+                <div className='flex flex-row gap-10 items-start'>
+                    <div className='p-10 flex flex-col w-70 border-2 border-[#9C0306] rounded-lg bg-white flex-shrink-0'>
                         <button className='flex flex-col items-center justify-center'>
                             <img src={UploadIcon} alt="Upload" />
                             <p className='text-[#9C0306] py-3'>Choose file to upload</p>
                         </button>
                     </div>
-                    <div className='flex flex-col justify-start'>
+                    <div className='flex flex-col justify-start flex-1'>
                         <div>
-                            <p className='font-medium text-[20px]'>Description:</p>
-                            <textarea name="" id=""></textarea>
+                            <p className='font-medium text-[20px] mb-2'>Description:</p>
+                            <textarea 
+                                value={data.description}
+                                onChange={(e) => setData('description', e.target.value)}
+                                placeholder="Add Description"
+                                className="w-full h-40 px-4 py-2 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-[#9C0306] focus:border-[#9C0306] focus:outline-none resize-none"
+                                rows="5"
+                            />
                         </div>
                     </div>
+                </div>
+            </div>
+            <div className='flex flex-col justify-start px-6'>
+                <div>
+                    <h1 className='text-[20px] font-medium'>Product Name:</h1>
+                    <input 
+                    type="text" 
+                    value="Enter Product Name"
+                    className=''
+                    />
                 </div>
             </div>
             </div>
