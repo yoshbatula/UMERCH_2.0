@@ -1,0 +1,73 @@
+import { useForm } from '@inertiajs/react';
+import { useState, useEffect } from 'react';
+import UploadIcon from '../../../../images/UploadIcon.svg';
+
+export default function AddProductModal({ isOpen, onClose }) {
+    const { data, setData, post, processing, errors, reset } = useForm({
+        name: '',
+        description: '',
+        price: '',
+        stock: '',
+        category: '',
+    });
+
+    const [visible, setVisible] = useState(false);
+    
+    useEffect(() => {
+        if (isOpen) {
+            setVisible(true);
+        } else {
+            const timer = setTimeout(() => setVisible(false), 200);
+            return () => clearTimeout(timer);
+        }
+    }, [isOpen]);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        post('/admin/products', {
+            onSuccess: () => {
+                reset();
+                onClose();
+            },
+        });
+    };
+
+
+    if (!isOpen) return null;
+
+    return (
+        <div 
+            className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-white/20"
+            onClick={onClose}
+        >
+            <div 
+                className="bg-white rounded-2xl shadow-xl w-full max-w-2xl mx-4 max-h-[90vh] overflow-y-auto"
+                onClick={(e) => e.stopPropagation()}
+            >
+            {/* Header */}
+            <div>
+                <div className="bg-[#9C0306] flex flex-row justify-between items-start p-6 border-b">
+                    <h2 className="text-[32px] font-semibold text-white">ADD PRODUCT</h2>
+                </div>
+            </div>
+            {/* Modal Body */}
+            <div className='p-6'>
+                <div className='flex flex-row gap-10'>
+                    <div className='p-10 flex flex-col w-70 border-2 border-[#9C0306] rounded-lg bg-white'>
+                        <button className='flex flex-col items-center justify-center'>
+                            <img src={UploadIcon} alt="Upload" />
+                            <p className='text-[#9C0306] py-3'>Choose file to upload</p>
+                        </button>
+                    </div>
+                    <div className='flex flex-col justify-start'>
+                        <div>
+                            <p className='font-medium text-[20px]'>Description:</p>
+                            <textarea name="" id=""></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    );
+}

@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from "@/Layouts/AdminNav";
 import Box from '../../../..//images/BOX.svg'
 import Danger from '../../../../images/Danger.svg'
 import AdminFooter from '../../../Layouts/AdminFooter';
+import ProductModal from '../modals/AddProductModal';
 export default function AddProduct() {
+
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
+    const openAddModal = () => {
+        setIsAddModalOpen(true);
+    };
+
+    const closeAddModal = () => {
+        setIsAddModalOpen(false);
+    };
+
     return (
         <>
         <div className='py-9 px-19 flex flex-col'>
@@ -67,7 +79,7 @@ export default function AddProduct() {
                         />
                     </div>
                     <div className='bg-[#9C0306] text-white text-[16px] flex flex-row font-semibold justify-center items-center w-[166px] h-[44px] rounded-[20px] hover: cursor-pointer'>
-                        <button className='hover:cursor-pointer'>Add Product</button>
+                        <button className='hover:cursor-pointer' onClick={openAddModal}>Add Product</button>
                     </div>
                 </div>
             </div>
@@ -103,6 +115,8 @@ export default function AddProduct() {
                 </div>
             </div>
         </div>  
+
+        <ProductModal isOpen={isAddModalOpen} onClose={closeAddModal} />
         {/* Footer */}
         <AdminFooter />
         {/* Initial commit */}
