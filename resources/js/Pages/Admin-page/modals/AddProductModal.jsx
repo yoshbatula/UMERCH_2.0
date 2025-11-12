@@ -73,6 +73,7 @@ export default function AddProductModal({ isOpen, onClose }) {
                     </div>
                 </div>
             </div>
+            {/* Adding new features to the modal */}
             <div className='flex flex-col justify-start px-6'>
                 <div>
                     <h1 className='text-[20px] font-medium'>Product Name:</h1>
