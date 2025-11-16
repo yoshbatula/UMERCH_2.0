@@ -87,6 +87,7 @@ export default function AddProductModal({ isOpen, onClose }) {
             </div>
             {/* adding some new  */}
             {/* new commit */}
+            {/* initial commits */}
         </div>
     );
 }
