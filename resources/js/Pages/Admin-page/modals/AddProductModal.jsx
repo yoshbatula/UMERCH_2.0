@@ -88,6 +88,7 @@ export default function AddProductModal({ isOpen, onClose }) {
             {/* adding some new  */}
             {/* new commit */}
             {/* another commiit */}
+            {/* just putting new featured */}
         </div>
     );
 }
