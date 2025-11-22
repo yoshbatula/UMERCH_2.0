@@ -84,7 +84,7 @@ export default function AddProductModal({ isOpen, onClose }) {
                     />
                 </div>
                 <div>
-                    <h1 className='text-[20px] font-medium'>Category:</h1>
+                    <h1 className='text-[20px] font-medium'>Add Price:</h1>
                 </div>
             </div>
             </div>
