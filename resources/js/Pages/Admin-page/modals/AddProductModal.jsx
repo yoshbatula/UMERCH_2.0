@@ -85,7 +85,7 @@ export default function AddProductModal({ isOpen, onClose }) {
                 </div>
             </div>
             </div>
-            
+            {/* new features */}
         </div>
     );
 }
