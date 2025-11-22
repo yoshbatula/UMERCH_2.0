@@ -54,7 +54,7 @@ export default function AddProductModal({ isOpen, onClose }) {
             <div className='p-6'>
                 <div className='flex flex-row gap-10 items-start'>
                     <div className='p-10 flex flex-col w-70 border-2 border-[#9C0306] rounded-lg bg-white flex-shrink-0'>
-                        <button className='flex flex-col items-center justify-center'>
+                        <button className='flex flex-col items-center justify-center hover: cursor-pointer'>
                             <img src={UploadIcon} alt="Upload" />
                             <p className='text-[#9C0306] py-3'>Choose file to upload</p>
                         </button>
@@ -79,13 +79,15 @@ export default function AddProductModal({ isOpen, onClose }) {
                     <h1 className='text-[20px] font-medium'>Product Name:</h1>
                     <input 
                     type="text" 
-                    value="Enter Product Name"
-                    className=''
+                    placeholder="Enter Product Name"
+                    className='px-3 border border-gray-300 rounded-2xl w-full h-10 mt-1'
                     />
+                </div>
+                <div>
+                    <h1 className='text-[20px] font-medium'>Category:</h1>
                 </div>
             </div>
             </div>
-            {/* new features */}
         </div>
     );
 }
