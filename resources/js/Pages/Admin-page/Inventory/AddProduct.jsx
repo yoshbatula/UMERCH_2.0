@@ -117,11 +117,7 @@ export default function AddProduct() {
         </div>  
 
         <ProductModal isOpen={isAddModalOpen} onClose={closeAddModal} />
-        {/* Footer */}
         <AdminFooter />
-        {/* Initial commit */}
-        {/* Another commit */}
-        {/* Initial commit */}
     </>
     );
 }
