@@ -120,6 +120,7 @@ export default function AddProduct() {
         <AdminFooter />
     </>
     );
+    // amptjer comiimt
 }
 
 AddProduct.layout = page => <Layout children={page} />;
